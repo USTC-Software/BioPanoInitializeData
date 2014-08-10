@@ -1,2 +1,3 @@
 # ignore .idea which is created and used by pycharm
 /.idea/
+*~
