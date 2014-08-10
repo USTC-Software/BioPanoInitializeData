@@ -37,17 +37,25 @@ def reaction_compound_linkset():
         ## reaction is a node whose TYPE is Reaction
         for reactant in reaction.REACTANTS:
             #reactant is a String Form
-            reactant_node = node.objects.filter(NAME=reactant)[0]
-            setLink(reactant_node, reaction, 'Compound', 'Reaction')
+            if not node.objects(NAME=reactant):
+                print 'Reaction_Reactants_Connect: ' + reactant + ' in ' + reaction.NAME + ' is not found'
+            else:
+                reactant_node = node.objects.filter(NAME=reactant)[0]
+                setLink(reactant_node, reaction, 'Compound', 'Reaction')
 
         for product in reaction.PRODUCTS:
             #product is a String
-            product_node = node.objects.filter(NAME=product)[0]
-            setLink(reaction, product_node, 'Reaction', 'Compound')
+            if not node.objects(NAME=product):
+                print 'Reaction_Product_Connect: ' + product + ' in ' + reaction.NAME + ' is not found'
+            else:
+                product_node = node.objects.filter(NAME=product)[0]
+                setLink(reaction, product_node, 'Reaction', 'Compound')
 
-        if 'ENZYME' in reaction:
-            if reaction.ENZYME:
-                for enzyme in reaction.ENZYME:
+        if 'ENZYME' in reaction and reaction.ENZYME:
+            for enzyme in reaction.ENZYME:
+                if not node.objects(NAME=enzyme):
+                    print 'Reaction_Enzyme_Connect: ' + enzyme + ' in ' + reaction.NAME + ' is not found'
+                else:
                     enzyme_node = node.objects.filter(NAME=enzyme)[0]
                     setLink(enzyme_node, reaction, 'Enzyme', 'Reaction')
 
