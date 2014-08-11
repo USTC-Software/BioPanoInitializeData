@@ -5,6 +5,7 @@ from mongoengine import *
 import os
 import string
 import re
+import threading
 
 
 class Compound(DynamicDocument):
@@ -65,8 +66,36 @@ class Compound(DynamicDocument):
                 self.normal_set(key, text)
 
 
+class c_importing_thread(threading.Thread): #The timer class is derived from the class threading.Thread
+
+    connect('igemdata')
+
+    def __init__(self, path_list, num):
+        threading.Thread.__init__(self)
+        self.path_list = path_list
+        self.num = num
+        self.thread_stop = False
+
+    def run(self):  # Overwrite run() method, put what you want the thread do here
+        while self.path_list:
+            path = self.path_list.pop()
+            fp = file(path, 'rU')
+            parse_dict = kegg_split(fp)
+            node = Compound()
+            node.data_save(parse_dict)
+            node.save()
+            fp.close()
+            print path + ' has saved successfully from thread ' + str(self.num)
+        else:
+            self.stop()
+
+    def stop(self):
+        self.thread_stop = True
+
+
 def main():
     BASEPATH = './kegg/compound/'
+    #BASEPATH = './compound/'
     connect('igemdata')
     #save the paths of .cvs files
     paths = []
@@ -75,15 +104,23 @@ def main():
         if '.xml' in filepath:
             paths.append(filepath)
 
-    for path in paths:
-        connect('igemdata')
+    thread1 = c_importing_thread(paths, 1)
+    thread2 = c_importing_thread(paths, 2)
+    thread3 = c_importing_thread(paths, 3)
+    thread4 = c_importing_thread(paths, 4)
+
+    thread1.start()
+    thread2.start()
+    thread3.start()
+    thread4.start()
+    """for path in paths:
+        #connect('igemdata')
         fp = file(path, 'rU')
         parse_dict = kegg_split(fp)
         node = Compound()
         node.data_save(parse_dict)
         node.save()
         fp.close()
-        print path + ' has saved successfully'
-
+        print path + ' has saved successfully'"""
 
 main()
