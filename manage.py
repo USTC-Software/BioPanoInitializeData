@@ -112,8 +112,6 @@ def main():
     #database_link()
     #patch1()
     #kegg_connect()
-    #patch1()
-    #kegg_connect()
     #kegg_reaction()
 
 

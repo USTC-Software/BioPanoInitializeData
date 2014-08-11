@@ -20,8 +20,8 @@ import_data_node.main()
 print 'importing link....'
 import_data_link.main()
 
-print 'adding father-child refs....'
-add_refs_father.main()
+#print 'adding father-child refs....'
+#add_refs_father.main()
 
 print 'adding refs....'
 add_ref.main()

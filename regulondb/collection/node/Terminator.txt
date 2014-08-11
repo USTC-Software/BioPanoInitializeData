@@ -1,4 +1,4 @@
-NAME	left	right	DNA strand where the terminator is located	Terminator sequence	Transcription unit(s) related to the terminator   *see note1	Terminator type	Operon name	References (PubMed ID)	Evidence that supports the existence of the terminator
+NAME	left	right	DNA strand where the terminator is located	Sequence	Transcription unit(s) related to the terminator   *see note1	Terminator type	Operon name	References (PubMed ID)	Evidence that supports the existence of the terminator
 ECK120033737	274	310	forward	ggaaacacagAAAAAAGCCCGCACCTGACAGTGCGGGCTTTTTTTTTcgaccaaagg	thrL	rho-independent	thrLABC	287010	
 ECK120015459	9199	9226	forward	taatcattctTAGCGTGACCGGGAAGTCGGTCACGCTAcctcttctga	talB	rho-independent	talB	7592346	
 ECK120016882	20771	20784	reverse	cataaaaaaaCCCGCTTGCGCGGGctttttcaca	"rpsT,rpsT"	rho-independent	rpsT	2429258	

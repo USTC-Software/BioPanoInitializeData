@@ -1,6 +1,6 @@
 __author__ = 'feiyicheng'
 
-from Modules.kegg_parse import node,link
+from Modules.kegg_parse import node, link, kegg_split
 import re
 import os
 from Modules.convert_to_mongodb import *
@@ -40,7 +40,7 @@ def to_dict(fp):
         #print str(field_value_type)
         if len(field_value_type) == 3:
             dic[field_value_type[0]] = field_value_type[1]
-            dic['TYPE'] = field_value_type[2]
+            dic['TYPE'] = 'Reaction'
             field = field_value_type[0]
         else:
             print 'ERRORhaha!'
@@ -107,6 +107,7 @@ def main():
                     line = fp.readline()
             '''
             dic = to_dict(fp)
+            #dic = kegg_split(fp)
             #print dic
             save_to_database(dic, node)
             fp.close()

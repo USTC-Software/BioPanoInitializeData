@@ -33,30 +33,43 @@ def setLink(doc1, doc2, type1, type2):
 
 def reaction_compound_linkset():
     connect('igemdata')
-    for reaction in node.objects.filter(TYPE='Reaction'):
+
+    #faven't been used
+    reaction_counter = 0
+    found_counter = 0
+    missed_counter = 0
+    for reaction in node.objects(TYPE='Reaction').timeout(False):
+        reaction_counter += 1
+        if reaction_counter % 100 == 0:
+            print str(reaction_counter) + ' reactions has been analysed,and now ' + reaction.NAME + ' is on the process'
         ## reaction is a node whose TYPE is Reaction
         for reactant in reaction.REACTANTS:
             #reactant is a String Form
-            if not node.objects(NAME=reactant):
-                print 'Reaction_Reactants_Connect: ' + reactant + ' in ' + reaction.NAME + ' is not found'
+            reactant_node = node.objects(NAME=reactant).first()
+            if not reactant_node:
+                #print 'Reaction_Reactants_Connect: ' + reactant + ' in ' + reaction.NAME + ' is not found'
+                missed_counter += 1
+
             else:
-                reactant_node = node.objects.filter(NAME=reactant)[0]
                 setLink(reactant_node, reaction, 'Compound', 'Reaction')
 
         for product in reaction.PRODUCTS:
             #product is a String
-            if not node.objects(NAME=product):
-                print 'Reaction_Product_Connect: ' + product + ' in ' + reaction.NAME + ' is not found'
+            product_node = node.objects(NAME=product).first()
+            if not product_node:
+                #print 'Reaction_Product_Connect: ' + product + ' in ' + reaction.NAME + ' is not found'
+                missed_counter += 1
             else:
-                product_node = node.objects.filter(NAME=product)[0]
                 setLink(reaction, product_node, 'Reaction', 'Compound')
 
         if 'ENZYME' in reaction and reaction.ENZYME:
+            #print 'Has Enzyme'
             for enzyme in reaction.ENZYME:
-                if not node.objects(NAME=enzyme):
-                    print 'Reaction_Enzyme_Connect: ' + enzyme + ' in ' + reaction.NAME + ' is not found'
+                enzyme_node = node.objects(NAME=enzyme).first()
+                if not enzyme_node:
+                    #print 'Reaction_Enzyme_Connect: ' + enzyme + ' in ' + reaction.NAME + ' is not found'
+                    missed_counter += 1
                 else:
-                    enzyme_node = node.objects.filter(NAME=enzyme)[0]
                     setLink(enzyme_node, reaction, 'Enzyme', 'Reaction')
 
 reaction_compound_linkset()
