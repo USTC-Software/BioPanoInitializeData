@@ -107,8 +107,8 @@ def rebuild():
 
 
 def main():
-    #rebuild()
-    kegg_node(0)
+    rebuild()
+    #kegg_node(0)
     #kegg_reaction_function_link()
     #database_link()
     #patch1()
