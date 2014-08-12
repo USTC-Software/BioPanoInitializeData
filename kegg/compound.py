@@ -113,6 +113,7 @@ def main():
     thread2.start()
     thread3.start()
     thread4.start()
+
     """for path in paths:
         #connect('igemdata')
         fp = file(path, 'rU')

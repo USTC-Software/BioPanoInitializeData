@@ -31,6 +31,8 @@ def setLink(doc1, doc2, type1, type2):
     doc2.EDGE.append(link_instance.id)
 
 
+
+
 def reaction_compound_linkset():
     connect('igemdata')
 
@@ -38,7 +40,10 @@ def reaction_compound_linkset():
     reaction_counter = 0
     found_counter = 0
     missed_counter = 0
+    reaction_list = []
     for reaction in node.objects(TYPE='Reaction').timeout(False):
+        reaction_list.append(reaction)
+
         reaction_counter += 1
         if reaction_counter % 100 == 0:
             print str(reaction_counter) + ' reactions has been analysed,and now ' + reaction.NAME + ' is on the process'
