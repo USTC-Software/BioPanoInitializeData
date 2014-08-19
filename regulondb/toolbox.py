@@ -75,6 +75,8 @@ def save_data_txt(collection, path, typ):
     line = line.replace('\n', '')
     while line:
         item = line2dict(fields, line)
+        if item == 0:
+            continue
         savedict(item, typ, collection)
 
         line = fp.readline()
@@ -103,6 +105,10 @@ def savedict(dic, typ, collection):
         #SPECIAL
         if typ == 'Gene':
             dic['NAME'] = drop_brackets(dic['NAME'])
+
+        # Make sure about only one log with same NAME
+        if db.node.find_one({'NAME': dic['NAME']}):
+            return 0
 
         exec "db.%s.insert(dic)" % (collection, )
         db.count.update({'type': 'node'}, {'$inc': {'value': 1}})  # nodecount +1
