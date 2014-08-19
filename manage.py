@@ -97,7 +97,7 @@ def rebuild():
     kegg_reaction()
     print 'run reaction connection from super manage.py'
     kegg_connect()
-    print 'run reaction function sort fro super manage.py'
+    print 'run reaction function sort from super manage.py'
     kegg_reaction_function_link()
     print 'run link setting between gene and enzyme from super manage.py'
     database_link()
