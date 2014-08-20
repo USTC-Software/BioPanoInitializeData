@@ -47,7 +47,7 @@ def reaction_compound_linkset():
     cursor = db['node'].find({'TYPE': 'Reaction'}, timeout=False)
     for reaction in cursor:
         reaction_list.append(reaction)
-
+    for reaction in reaction_list:
         reaction_counter += 1
         if reaction_counter % 100 == 0:
             print str(reaction_counter) + ' reactions has been analysed,and now ' + reaction['NAME'] + ' is on the process'
