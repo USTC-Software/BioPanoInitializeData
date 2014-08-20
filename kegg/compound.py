@@ -16,7 +16,7 @@ class Compound(DynamicDocument):
     MOL_WEIGHT = FloatField()
     REMARK = StringField()
     REFERENCE = ListField(StringField())
-    EDGE = ListField(ReferenceField(link))
+    EDGE = ListField(ReferenceField(link), default=[])
 
     meta = {
         'collection': 'node'

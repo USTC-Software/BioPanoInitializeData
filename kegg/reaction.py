@@ -86,6 +86,7 @@ def save_to_database(dic, Doc):
             d.NAME_KEGG = dic['NAME']
         else:
             exec 'd.%s = dic[key]' % key
+        d.EDGE = []
     d.save()
     print str(d.NAME) + ' saved successfully!'
 
@@ -95,8 +96,10 @@ def main():
 
     basepath = './kegg/reaction'
     paths = get_dirs(basepath)
+    filecount = 0
     for path in paths:
         if path.endswith('xml'):
+            filecount += 1
             fp = open(path, 'rU')
             '''
             line = fp.readline()
@@ -111,6 +114,8 @@ def main():
             #print dic
             save_to_database(dic, node)
             fp.close()
+
+    print str(filecount) + ' reaction has been processed'
 
 main()
 

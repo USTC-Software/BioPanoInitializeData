@@ -12,7 +12,7 @@ class Enzyme(DynamicDocument):
     NAME = StringField()
     TYPE = StringField()
     NAME_KEGG = StringField()
-    EDGE = ListField(ReferenceField(link))
+    EDGE = ListField(ReferenceField(link), default=[])
     CLASS = StringField()
     REACTION = StringField()
     SUBSTRATE = StringField()
