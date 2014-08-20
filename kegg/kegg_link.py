@@ -31,7 +31,7 @@ def setLink(doc1, doc2, type1, type2):
     link_instance['TYPE1'] = type1
     link_instance['TYPE2'] = type2
     link_id = db.link.insert(link_instance)
-    print link_id
+    #print link_id
     db.node.update({'_id': doc1['_id']}, {'$push': {'EDGE': link_id}})
     db.node.update({'_id': doc2['_id']}, {'$push': {'EDGE': link_id}})
 
