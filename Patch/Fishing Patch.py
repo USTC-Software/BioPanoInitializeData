@@ -24,7 +24,7 @@ def create_noderef_coll():
 
     content_list = []
     for log in log_list:
-        content = {'ref_id': log['_id'], 'x': INIT_LOCATION, 'y': INIT_LOCATION, 'auth_id_num': 54250}
+        content = {'node_id': log['_id'], 'x': INIT_LOCATION, 'y': INIT_LOCATION, 'owner': 54250}
         # In Kegg database, we use NAME_KEGG as NAME in index table
         if log['TYPE'] in ['Enzyme', 'Compound']:
             if 'NAME_KEGG' in log.keys():
@@ -34,7 +34,9 @@ def create_noderef_coll():
         else:
             content['nickname'] = log['NAME']
         content_list.append(content)
-    db.node_ref.insert(content_list)
+    ref_log_list = db.node_ref.insert(content_list)
+    for ref_log in ref_log_list:
+        db.node.update({'_id': ref_log['_id']}, {'$push': {'REF': ref_log['_id']}})
     print 'Basic index table of node establishing is over '
 
 
@@ -49,12 +51,14 @@ def create_linkref_coll():
 
     content_list = []
     for log in log_list:
-        content = {'ref_id': log['_id'], 'id1': log['NODE1'], 'id2': log['NODE2'], 'auth_id_num': 54250}
+        content = {'link_id': log['_id'], 'id1': log['NODE1'], 'id2': log['NODE2'], 'owner': 54250}
         content_list.append(content)
 
-    db.link_ref.insert(content_list)
-    db.link_ref.create_index('id1')
-    db.link_ref.create_index('id2')
+    ref_log_list = db.link_ref.insert(content_list)
+    for ref_log in ref_log_list:
+        db.link.update({'_id': ref_log['_id']}, {'$push': {'REF': ref_log['_id']}})
+
+    db.link_ref.create_index([('id1', ASCENDING), ('id2', DESCENDING)])
 
     print 'Basic index table of link establishing is over'
 
@@ -78,8 +82,8 @@ def renew_linkdb():
 
 
 def main():
-    #create_noderef_coll()
-    #create_linkref_coll()
+    create_noderef_coll()
+    create_linkref_coll()
     renew_nodedb()
     renew_linkdb()
 

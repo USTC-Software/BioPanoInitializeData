@@ -53,7 +53,7 @@ def main():
                     continue
                 reaction_list = module['REACTION']
                 for reaction in reaction_list:
-                    db.reaction.update({'NAME': reaction}, {'$set': {'FUNCTION': log['ID']}})
+                    db.reaction.update({'NAME': reaction}, {'$set': {'FUNCTION': log['FUNCTION']}})
                     print str(count) + ' update successfully'
                     count += 1
             else:
