@@ -5,6 +5,7 @@ import re
 import os
 from Modules.convert_to_mongodb import *
 from mongoengine import *
+import CONSTANT
 
 
 class count(Document):
@@ -92,7 +93,7 @@ def save_to_database(dic, Doc):
 
 
 def main():
-    connect('igemdata')
+    connect(CONSTANT.DATABASE)
 
     basepath = './kegg/reaction'
     paths = get_dirs(basepath)

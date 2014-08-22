@@ -5,6 +5,7 @@ import re
 import os
 import xlrd
 import pymongo
+import CONSTANT
 
 #DynamicClass
 class Node(DynamicDocument):
@@ -79,7 +80,7 @@ def standardized(strin):
 
 def main():
     conn = pymongo.Connection()
-    db = conn.igemdata
+    db = conn[CONSTANT.DATABASE]
 
     basepath = './regulondb/node/'
     paths = get_dirs(basepath)
@@ -127,7 +128,7 @@ def main():
 
 def main_2():
     conn = pymongo.Connection()
-    db = conn.igemdata
+    db = conn[CONSTANT.DATABASE]
 
     basepath = './regulondb/link/'
     paths = get_dirs(basepath)
@@ -173,7 +174,7 @@ def main_2():
                     tag = tag + 1
 
 def main_3():
-    connect('igemdata')
+    connect(CONSTANT.DATABASE)
     basepath = './regulondb/father'
     paths = get_dirs(basepath)
     for path in paths:

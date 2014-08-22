@@ -3,6 +3,7 @@ from mongoengine import *
 from Modules.kegg_parse import node
 import re
 import pymongo
+import CONSTANT
 
 
 class count(Document):
@@ -25,7 +26,7 @@ class Gene_Enzyme_link(Document):
 
 
 def main():
-    connect('igemdata')
+    connect(CONSTANT.DATABASE)
     enzyme_list = node.objects.filter(TYPE='Enzyme')
     count_saved = 0
     count_searched = 0

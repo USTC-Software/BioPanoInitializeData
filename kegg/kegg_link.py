@@ -2,8 +2,9 @@ __author__ = 'Beibeihome'
 from Modules.kegg_parse import *
 from pymongo import *
 from bson.objectid import ObjectId
+import CONSTANT
 
-db = MongoClient().igemdata
+db = MongoClient()[CONSTANT.DATABASE]
 
 
 class count(Document):
@@ -37,8 +38,7 @@ def setLink(doc1, doc2, type1, type2):
 
 
 def reaction_compound_linkset():
-    #connect('igemdata')
-
+    #connect(CONSTANT.DATABASE)
     #faven't been used
     reaction_counter = 0
     found_counter = 0
@@ -47,6 +47,7 @@ def reaction_compound_linkset():
     cursor = db['node'].find({'TYPE': 'Reaction'}, timeout=False)
     for reaction in cursor:
         reaction_list.append(reaction)
+    cursor.close()
     for reaction in reaction_list:
         reaction_counter += 1
         if reaction_counter % 100 == 0:
@@ -80,6 +81,5 @@ def reaction_compound_linkset():
                     missed_counter += 1
                 else:
                     setLink(enzyme_node, reaction, 'Enzyme', 'Reaction')
-    cursor.close()
 
 reaction_compound_linkset()

@@ -5,6 +5,7 @@ from mongoengine import *
 import re
 import os
 import string
+import CONSTANT
 
 
 class Module(DynamicDocument):
@@ -76,7 +77,7 @@ class Module(DynamicDocument):
 def main():
     #This path is based on manage.py
     BASEPATH = './kegg/module/'
-    connect('igemdata')
+    connect(CONSTANT.DATABASE)
     #save the paths of .cvs files
     paths = []
     for filelist in os.listdir(BASEPATH):

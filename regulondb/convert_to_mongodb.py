@@ -5,7 +5,7 @@ import re
 import os
 from Modules.convert_to_mongodb import *
 import pymongo
-
+import CONSTANT
 
 
 def handle_equation(field_value, dic):
@@ -67,7 +67,7 @@ def save_to_database(dic, db):
 
 def main():
     conn = pymongo.Connection()
-    db = conn.igemdata
+    db = conn[CONSTANT.DATABASE]
 
 
     basepath = '/Users/feiyicheng/Documents/igem-backend/origin_data/kegg/reaction'

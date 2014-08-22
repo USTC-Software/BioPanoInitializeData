@@ -4,14 +4,16 @@ from pymongo import *
 from mongoengine import *
 from regulondb import *
 from Modules.kegg_parse import node
+import CONSTANT
+
 
 OVERWRITE = True
-db = MongoClient().igemdata
+db = MongoClient()[CONSTANT.DATABASE]
 
 
 def count():
     client = MongoClient()
-    db = client.igemdata
+    db = client[CONSTANT.DATABASE]
     db.drop_collection('count')
     db.count.insert({'type': 'node', 'value': 0})
     db.count.insert({'type': 'link', 'value': 0})
@@ -54,7 +56,7 @@ def kegg_reaction():
 
 def kegg_reaction_function_link():
     path = './kegg/mm_parse.py'
-    db = MongoClient().igemdata
+    db = MongoClient()[CONSTANT.DATABASE]
     db.drop_collection('module__function_link')
     #order = 'python ' + path
     #os.system(order)
@@ -79,10 +81,15 @@ def patch1():
     path2 = './Sequence Analyse/UTR_importing.py'
     execfile(path2, {})
 
+def patch2():
+    db.drop_collection('node_ref')
+    db.drop_collection('link_ref')
+    path = './Patch/Fishing Patch.py'
+    execfile(path, {})
 
 def rebuild():
     client = MongoClient()
-    db = client.igemdata
+    db = client[CONSTANT.DATABASE]
     if OVERWRITE:
         for collection in db.collection_names():
             if collection != 'system.indexes':
@@ -105,20 +112,19 @@ def rebuild():
     print 'patch 1 built in August'
     patch1()
 
+    print 'Fishing patch built in August 22'
+    patch2()
+
 
 def main():
     rebuild()
+    #patch2()
     #kegg_node(0)
     #kegg_reaction_function_link()
     #database_link()
     #patch1()
     #kegg_connect()
     #kegg_reaction()
-
-
-def test():
-    print 'Input the function be to tested'
-    path = input()
 
 
 main()

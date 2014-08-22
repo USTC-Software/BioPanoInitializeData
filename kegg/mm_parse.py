@@ -4,6 +4,7 @@ __author__ = 'Beibeihome'
 import re
 from mongoengine import *
 import pymongo
+import CONSTANT
 
 
 class Module_Function_link(Document):
@@ -12,8 +13,12 @@ class Module_Function_link(Document):
     MODULE = ListField(StringField())
 
 
+def delete_module():
+    db = MongoClient()[CONSTANT.DATABASE]
+    db.node.remove({'TYPE': 'Module'})
+
 def parse():
-    connect('igemdata')
+    connect(CONSTANT.DATABASE)
     PATH = './kegg/module/mm.txt'
     fp = file(PATH, 'rU')
     #function dict save the informatino between function and module
@@ -37,12 +42,12 @@ def parse():
 
 def main():
     client = pymongo.MongoClient()
-    db = client.igemdata
+    db = client[CONSTANT.DATABASE]
     count = 0
     for log in db.module__function_link.find():
         #module_list = db.kegg_node.find({'TYPE': 'Module'})
         ### Some Module doesn't have REACTION attribute, so if yixia
-        for module in db.kegg_node.find({'NAME': {'$in': log['MODULE']}}):
+        for module in db.node.find({'NAME': {'$in': log['MODULE']}}):
             if module['SUBTYPE'] == 'Pathway':
                 if 'REACTION' not in module.keys():
                     continue
@@ -54,6 +59,8 @@ def main():
             else:
                 continue
     print 'All update successfully'
+
+    delete_module()
 
 
 parse()

@@ -2,6 +2,7 @@ __author__ = 'feiyicheng'
 
 from toolbox import *
 import pymongo
+import CONSTANT
 
 
 def main():

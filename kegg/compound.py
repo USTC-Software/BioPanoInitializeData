@@ -6,6 +6,7 @@ import os
 import string
 import re
 import threading
+import CONSTANT
 
 
 class Compound(DynamicDocument):
@@ -68,7 +69,7 @@ class Compound(DynamicDocument):
 
 class c_importing_thread(threading.Thread): #The timer class is derived from the class threading.Thread
 
-    connect('igemdata')
+    connect(CONSTANT.DATABASE)
 
     def __init__(self, path_list, num):
         threading.Thread.__init__(self)
@@ -96,7 +97,7 @@ class c_importing_thread(threading.Thread): #The timer class is derived from the
 def main():
     BASEPATH = './kegg/compound/'
     #BASEPATH = './compound/'
-    connect('igemdata')
+    connect(CONSTANT.DATABASE)
     #save the paths of .cvs files
     paths = []
     for filelist in os.listdir(BASEPATH):
@@ -115,7 +116,7 @@ def main():
     thread4.start()
 
     """for path in paths:
-        #connect('igemdata')
+        #connect(CONSTANT.DATABASE)
         fp = file(path, 'rU')
         parse_dict = kegg_split(fp)
         node = Compound()

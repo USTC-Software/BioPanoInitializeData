@@ -4,12 +4,11 @@ import os
 import re
 import pymongo
 import xlrd
+import CONSTANT
 
 
 conn = pymongo.Connection()
-db = conn.igemdata
-
-
+db = conn[CONSTANT.DATABASE]
 
 
 def get_base_path():

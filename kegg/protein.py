@@ -5,6 +5,7 @@ from mongoengine import *
 import re
 import os
 import string
+import CONSTANT
 
 
 class count(Document):
@@ -90,7 +91,7 @@ class Protein(DynamicDocument):
 
 def main():
     BASEPATH = './kegg/protein/'
-    connect('igemdata')
+    connect(CONSTANT.DATABASE)
     #save the paths of .cvs files
     paths = []
     for filelist in os.listdir(BASEPATH):

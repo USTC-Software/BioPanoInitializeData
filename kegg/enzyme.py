@@ -5,6 +5,7 @@ import os
 import string
 import re
 from Modules.kegg_parse import *
+import CONSTANT
 
 
 class Enzyme(DynamicDocument):
@@ -89,7 +90,7 @@ def non_eco_enzyme_delete():
 
 def main():
     BASEPATH = './kegg/enzyme/'
-    connect('igemdata')
+    connect(CONSTANT.DATABASE)
     #save the paths of .cvs files
     paths = []
     for filelist in os.listdir(BASEPATH):
@@ -98,7 +99,6 @@ def main():
             paths.append(filepath)
 
     for path in paths:
-        connect('igemdata')
         fp = file(path, 'rU')
         parse_dict = kegg_split(fp)
         node = Enzyme()

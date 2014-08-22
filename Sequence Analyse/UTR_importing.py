@@ -3,9 +3,10 @@ __author__ = 'Beibeihome'
 from mongoengine import *
 import re
 import xlrd
+import CONSTANT
 
 SOURCE_PATH = './regulondb/collection/node/UTR_5_3_sequence.xlsx'
-connect('igemdata')
+connect(CONSTANT.DATABASE)
 
 
 class UTR(DynamicDocument):

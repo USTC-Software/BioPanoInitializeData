@@ -1,11 +1,12 @@
 __author__ = 'feiyicheng'
 
 from toolbox import *
+import CONSTANT
 
 
 def main():
     conn = pymongo.Connection()
-    db = conn.igemdata
+    db = conn[CONSTANT.DATABASE]
 
     db.link.remove()
     db.node.remove()
