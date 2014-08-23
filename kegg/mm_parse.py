@@ -14,7 +14,7 @@ class Module_Function_link(Document):
 
 
 def delete_module():
-    db = MongoClient()[CONSTANT.DATABASE]
+    db = pymongo.MongoClient()[CONSTANT.DATABASE]
     db.node.remove({'TYPE': 'Module'})
 
 def parse():
