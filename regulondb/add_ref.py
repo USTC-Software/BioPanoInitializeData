@@ -34,6 +34,7 @@ def main():
             print 'node_ref added successfully || edge+_id:' + str(edge['ID'])
 
         else:
+            db.link.remove({'_id': edge['_id']})
             print "link :can't find"
 
 

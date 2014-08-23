@@ -78,7 +78,7 @@ def renew_nodedb():
 def renew_linkdb():
     db.link.update({}, {'$unset': {'NODE1': "", 'NODE2': ""}}, multi=True)
     db.link.update({}, {'$set': {'REF_COUNT': INIT_COUNTER_NUM_SERVER}}, multi=True)
-    sum_num = db.node.find().count()
+    sum_num = db.link.find().count()
     print 'All of ' + str(sum_num) + ' logs has been processed'
     print 'NODE_id attribute of link has been deleted'
     print 'Set REF_COUNT attribute on link'

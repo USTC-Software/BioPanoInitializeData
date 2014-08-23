@@ -115,6 +115,8 @@ def savedict(dic, typ, collection):
         dic['ID'] = count + 1
         dic['TYPE1'] = typ[0]
         dic['TYPE2'] = typ[1]
+        dic['NODE1'] = None
+        dic['NODE2'] = None
         exec "db.%s.insert(dic)" % (collection, )
         db.count.update({'type': 'link'}, {'$inc': {'value': 1}})  # linkcount +1
     elif collection == 'product':

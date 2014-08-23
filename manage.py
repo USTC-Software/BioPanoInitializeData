@@ -81,11 +81,13 @@ def patch1():
     path2 = './Sequence Analyse/UTR_importing.py'
     execfile(path2, {})
 
+
 def patch2():
     db.drop_collection('node_ref')
     db.drop_collection('link_ref')
     path = './Patch/Fishing Patch.py'
     execfile(path, {})
+
 
 def rebuild():
     client = MongoClient()
