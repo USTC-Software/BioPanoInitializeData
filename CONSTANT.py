@@ -1,3 +1,3 @@
 __author__ = 'Beibeihome'
 
-DATABASE = 'igemdata0823'
+DATABASE = 'igemdata_index_objective'

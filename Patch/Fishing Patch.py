@@ -34,9 +34,10 @@ def create_noderef_coll():
         else:
             content['nickname'] = log['NAME']
         content_list.append(content)
-    ref_log_list = db.node_ref.insert(content_list)
-    for ref_log in ref_log_list:
-        db.node.update({'_id': ref_log['_id']}, {'$push': {'REF': ref_log['_id']}})
+    ref_log_id_list = db.node_ref.insert(content_list)
+    for ref_log_id in ref_log_id_list:
+        ref_log = db.node_ref.find_one({'_id': ref_log_id})
+        db.node.update({'_id': ref_log['node_id']}, {'$push': {'REF': ref_log_id}})
     print 'Basic index table of node establishing is over '
 
 
@@ -54,9 +55,11 @@ def create_linkref_coll():
         content = {'link_id': log['_id'], 'id1': log['NODE1'], 'id2': log['NODE2'], 'owner': 54250}
         content_list.append(content)
 
-    ref_log_list = db.link_ref.insert(content_list)
-    for ref_log in ref_log_list:
-        db.link.update({'_id': ref_log['_id']}, {'$push': {'REF': ref_log['_id']}})
+    ref_log_id_list = db.link_ref.insert(content_list)
+
+    for ref_log_id in ref_log_id_list:
+        ref_log = db.link_ref.find_one({'_id': ref_log_id})
+        db.link.update({'_id': ref_log['link_id']}, {'$push': {'REF': ref_log_id}})
 
     db.link_ref.create_index([('id1', ASCENDING), ('id2', DESCENDING)])
 
