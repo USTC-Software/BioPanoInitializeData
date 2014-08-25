@@ -22,8 +22,10 @@ def count():
 
 def regulondb():
     path = './regulondb/manage.py'
+    uniprot_path = './other/uniprot.py'
     # I don't know what is {} using for,but this function can't be without it
     execfile(path, {})
+    execfile(uniprot_path, {})
 
 
 def regulondb_link():
@@ -115,7 +117,7 @@ def rebuild():
     patch1()
 
     print 'Fishing patch built in August 22'
-    patch2()
+    #patch2()
 
 
 def main():
