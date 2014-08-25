@@ -117,7 +117,7 @@ def rebuild():
     patch1()
 
     print 'Fishing patch built in August 22'
-    #patch2()
+    patch2()
 
 
 def main():
