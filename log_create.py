@@ -7,6 +7,7 @@ import json
 
 db = MongoClient()[CONSTANT.DATABASE]
 fp = open(CONSTANT.LOG_PATH, 'w+')
+fp_not_found = open('./not_found_list.txt', 'w+')
 
 num_with_TF = 0
 num_with_Enzyme = 0
@@ -70,9 +71,11 @@ def main():
 
         fp.write(gene['NAME'] + '  ')
         if not search_exists(gene['NAME'], gene_exist_list, rna_gene_list):
-            log = db.uniprot.find_one({'gene_name': gene['NAME']})
+            uniprot_name = gene['NAME'].replace('-', '').split('-')[0]
+            log = db.uniprot.find_one({'gene_name': uniprot_name})
             if not log:
                 fp.write('can\'t be found in uniprot\n')
+                fp_not_found.write(gene['NAME']+'\n')
                 num_not_found_in_uniprot += 1
                 continue
             fp.write(' should be saved\n')
@@ -82,9 +85,12 @@ def main():
 
     fp.write('\n\nnum_with_TF: ' + str(num_with_TF) + '\n')
     fp.write('num_with_Enzyme: ' + str(num_with_Enzyme) + 'compare: ' + str(len(gene_exist_list)) + '\n')
-    fp.write('num of gene which product RNA: ' + str(num_with_RNA))
+    fp.write('num of gene which product RNA: ' + str(num_with_RNA) +'\n')
     fp.write('num of gene with multi enzyme: ' + str(len(gene_multi_exit_list)) + '\n')
     fp.write('num found in uniprot: ' + str(num_not_found_in_uniprot) + '\n')
     fp.write('num of protein newly added: ' + str(saved_count))
+
+    fp.close()
+    fp_not_found.close()
 
 main()

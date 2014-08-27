@@ -22,10 +22,9 @@ def count():
 
 def regulondb():
     path = './regulondb/manage.py'
-    uniprot_path = './other/uniprot.py'
     # I don't know what is {} using for,but this function can't be without it
     execfile(path, {})
-    execfile(uniprot_path, {})
+
 
 
 def regulondb_link():
@@ -96,8 +95,14 @@ def patch2():
     execfile(path, {})
 
 
+def uniprot_update():
+    path = uniprot_path = './other/uniprot.py'
+    execfile(uniprot_path, {})
+
+
 def log_create():
-    path = './log'
+    path = './log_create.py'
+    execfile(path, {})
 
 
 def rebuild():
@@ -130,8 +135,11 @@ def rebuild():
     print 'Fishing patch built in August 22'
     #patch2()
 
-    #print 'working log creating'
+    print 'working log creating'
     log_create()
+
+    print 'uniprot updating'
+    uniprot_update()
 
 
 def main():
@@ -144,5 +152,6 @@ def main():
     #kegg_connect()
     #kegg_reaction()
 
-main()
+#main()
 #product_process()
+log_create()
