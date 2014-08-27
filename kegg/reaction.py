@@ -89,7 +89,7 @@ def save_to_database(dic, Doc):
             exec 'd.%s = dic[key]' % key
         d.EDGE = []
     d.save()
-    print str(d.NAME) + ' saved successfully!'
+    #print str(d.NAME) + ' saved successfully!'
 
 
 def main():

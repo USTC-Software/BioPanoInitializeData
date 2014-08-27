@@ -104,7 +104,7 @@ def savedict(dic, typ, collection):
             dic['NAME'] = drop_brackets(dic['NAME'])
 
         # Make sure about only one log with same NAME
-        if db.node.find_one({'NAME': dic['NAME'], 'TYPE': dic['TYPE']}):
+        if db.node.find_one({'NAME': dic['NAME'], 'TYPE': dic['TYPE']}) or dic['NAME'] == '' or dic['NAME'] == 'Phantom Gene':
             print 'NAME: ' + dic['NAME'] + '  TYPE: ' + dic['TYPE']
             return -1
 

@@ -5,8 +5,8 @@ import os
 import string
 import re
 from Modules.kegg_parse import *
+import pymongo
 import CONSTANT
-
 
 class Enzyme(DynamicDocument):
     ID = IntField()
@@ -83,7 +83,7 @@ class Enzyme(DynamicDocument):
 def non_eco_enzyme_delete():
 
     module_list = node.objects.filter(TYPE='Enzyme')
-    for enzyme_to_delete in module_list.filter(GENES__exists=0):
+    for enzyme_to_delete in module_list.filter(GENES=[]):
         enzyme_to_delete.delete()
     print 'Non-ECO enzymes have been deleted'
 
@@ -97,7 +97,7 @@ def main():
         filepath = os.path.join(BASEPATH, filelist)
         if '.xml' in filepath:
             paths.append(filepath)
-
+    count = 0
     for path in paths:
         fp = file(path, 'rU')
         parse_dict = kegg_split(fp)
@@ -106,8 +106,12 @@ def main():
         node.save()
         fp.close()
         print path + ' has saved successfully'
+        count += 1
+
     ## Keep the Enzyme which appear in ECO
+
     non_eco_enzyme_delete()
+
 
 main()
 

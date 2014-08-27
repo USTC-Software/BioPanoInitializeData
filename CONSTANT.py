@@ -1,4 +1,8 @@
 __author__ = 'Beibeihome'
 
-DATABASE = 'igemdata_new'
-#DATABASE = 'igemdata'
+from datetime import *
+
+#DATABASE = 'igemdata_new'
+DATABASE = 'igemdata'
+
+LOG_PATH = 'log' + str(datetime.now().month) + '_' + str(datetime.now().day) + '.txt'

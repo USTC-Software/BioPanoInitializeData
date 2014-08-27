@@ -33,6 +33,11 @@ def regulondb_link():
     execfile(path, {})
 
 
+def product_process():
+    path = './regulondb/product.py'
+    execfile(path, {})
+
+
 def kegg_node(number=None):
     basepath = './kegg/'
     #paths = [basepath + 'compound.py', basepath + 'enzyme.py', basepath + 'module.py', basepath + 'protein.py']
@@ -91,6 +96,10 @@ def patch2():
     execfile(path, {})
 
 
+def log_create():
+    path = './log'
+
+
 def rebuild():
     client = MongoClient()
     db = client[CONSTANT.DATABASE]
@@ -102,6 +111,8 @@ def rebuild():
     count()
     print 'run regulondb importing from super manage.py'
     regulondb()
+    print 'product importing '
+    product_process()
     print 'run kegg_node importing from super manage.py'
     kegg_node()
     print 'run kegg_reaction importing from super manage.py'
@@ -117,7 +128,10 @@ def rebuild():
     patch1()
 
     print 'Fishing patch built in August 22'
-    patch2()
+    #patch2()
+
+    #print 'working log creating'
+    log_create()
 
 
 def main():
@@ -130,5 +144,5 @@ def main():
     #kegg_connect()
     #kegg_reaction()
 
-
 main()
+#product_process()

@@ -53,8 +53,8 @@ def main():
                     gene['EDGE'].append(gene_enzyme_link.id)
                     enzyme['EDGE'].append(gene_enzyme_link.id)
 
-                    print str(count_saved) + ' log(s) have been saved successfully'
                     count_saved += 1
+                print str(count_saved) + ' link between gene and enzyme have been saved successfully'
         count_searched += 1
     print str(count_searched) + ' enzymes have been searched'
 
