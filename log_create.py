@@ -71,11 +71,11 @@ def main():
 
         fp.write(gene['NAME'] + '  ')
         if not search_exists(gene['NAME'], gene_exist_list, rna_gene_list):
-            uniprot_name = gene['NAME'].replace('-', '').split('-')[0]
+            uniprot_name = gene['NAME'].replace('-', '').split('_')[0]
             log = db.uniprot.find_one({'gene_name': uniprot_name})
             if not log:
                 fp.write('can\'t be found in uniprot\n')
-                fp_not_found.write(gene['NAME']+'\n')
+                fp_not_found.write(gene['NAME'] + '\n')
                 num_not_found_in_uniprot += 1
                 continue
             fp.write(' should be saved\n')
