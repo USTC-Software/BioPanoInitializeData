@@ -1,4 +1,6 @@
 __author__ = 'Beibeihome'
+__version__ = '1.1.1.0'
+
 import os
 from pymongo import *
 from mongoengine import *

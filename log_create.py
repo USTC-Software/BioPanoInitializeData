@@ -7,7 +7,7 @@ import json
 
 db = MongoClient()[CONSTANT.DATABASE]
 fp = open(CONSTANT.LOG_PATH, 'w+')
-fp_not_found = open('./not_found_list.txt', 'w+')
+fp_not_found = open('log/not_found_list.txt', 'w+')
 
 num_with_TF = 0
 num_with_Enzyme = 0
@@ -38,7 +38,7 @@ def search_exists(gene_name, gene_exist_list, rna_gene_list):
 
 def main():
     num_not_found_in_uniprot = 0
-    text = open('H:\IGEM\Database\local_backend\preprocess\ecoliparse.txt', 'r').read().replace('\'', '\"')
+    text = open('./ecoliparse.txt', 'r').read().replace('\'', '\"')
     #print text
     dict = json.loads(text)
     #print dict
@@ -61,8 +61,10 @@ def main():
     print 'existed gene list has been built'
     fp.write('coding_gene_list\n\n')
     fp.write(str(gene_exist_list))
-    fp.write('gene which product RNA\n\n')
+    fp.write('\n\ngene which product RNA\n\n')
     fp.write(str(rna_gene_list))
+    fp.write('\n\n gene which product multi enzyme\n\n')
+    fp.write(str(gene_multi_exit_list))
     #print gene_exist_list
 
     saved_count = 0

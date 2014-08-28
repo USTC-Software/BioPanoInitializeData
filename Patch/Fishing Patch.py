@@ -6,6 +6,7 @@ import CONSTANT
 
 ## 2014/8/22
 ## This patch is manage to reset database to index-object mode
+## After patch ,Version is 1.1.0.0
 
 INIT_COUNTER_NUM_SERVER = 1
 INIT_COUNTER_NUM_CLIENT = 0

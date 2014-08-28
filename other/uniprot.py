@@ -33,7 +33,8 @@ for file in os.listdir(data_path):
     print 'Parsing ' + file
     if not file.endswith('xml'):
         continue
-    gene_name = file.split('.')[0]
+    # resolve same name conflict
+    gene_name = file.split('split')[0].split('.')[0]
     filepath = os.path.join(data_path, file)
     protein_dict = {}
     protein_dict['NAME'] = file.split('.')[0]
