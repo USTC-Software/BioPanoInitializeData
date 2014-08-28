@@ -107,6 +107,11 @@ def log_create():
     execfile(path, {})
 
 
+def rename_enzyme():
+    path = './Patch/rename_enzyme.py'
+    execfile(path, {})
+
+
 def rebuild():
     client = MongoClient()
     db = client[CONSTANT.DATABASE]
@@ -142,6 +147,9 @@ def rebuild():
 
     print 'uniprot updating'
     uniprot_update()
+
+    print 'kegg rename'
+    rename_enzyme()
 
 
 def main():

@@ -8,7 +8,7 @@ import CONSTANT
 ## After Patch, Version = 1.1.1.0
 
 db = MongoClient()[CONSTANT.DATABASE]
-log_path = '../log/rename_enzyme.txt'
+log_path = './log/rename_enzyme.txt'
 ## 1 step: rename kegg data directly
 db.node.update({'$or': [{'TYPE':'Compound'}, {'TYPE':'Enzyme'}]}, {'$rename': {'NAME': 'ENTRY'}},multi=True)
 db.node.update({'$or': [{'TYPE':'Compound'}, {'TYPE':'Enzyme'}]}, {'$rename': {'NAME_KEGG': 'NAME'}},multi=True)

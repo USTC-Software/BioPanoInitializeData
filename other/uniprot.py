@@ -9,7 +9,7 @@ from bson import ObjectId
 db = MongoClient()[CONSTANT.DATABASE]
 data_path = './other/data/'
 #data_path = './data/'
-
+log_path = './log'
 
 def setLink(doc1, doc2, type1, type2):
     if not type1:
@@ -41,6 +41,10 @@ for file in os.listdir(data_path):
     protein_dict['TYPE'] = 'Protein'
     gene = ET.parse(filepath)
     entry = gene.getroot().find('entry')
+    if entry.find('protein') is not True:
+        fp = open(log_path, 'w')
+        fp.write(gene_name)
+        continue
     recommend_name = entry.find('protein').find('recommendedName')
     if recommend_name is not None:
         protein_dict['recommend_name'] = recommend_name.find('fullName').text
