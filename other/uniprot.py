@@ -41,16 +41,18 @@ for file in os.listdir(data_path):
     protein_dict['TYPE'] = 'Protein'
     gene = ET.parse(filepath)
     entry = gene.getroot().find('entry')
-    if entry.find('protein') is not True:
-        fp = open(log_path, 'w')
-        fp.write(gene_name)
-        continue
+
+    # recommend name saved
     recommend_name = entry.find('protein').find('recommendedName')
     if recommend_name is not None:
         protein_dict['recommend_name'] = recommend_name.find('fullName').text
+
+    # alternative name saved
     alternative_name = entry.find('protein').find('alternativeName')
     if alternative_name is not None:
         protein_dict['alternativeName'] = alternative_name.find('fullName').text
+
+    # organism saved
     organism = entry.find('organism').find('name').text
     protein_dict['organism'] = organism
     taxon_list = []
@@ -58,6 +60,7 @@ for file in os.listdir(data_path):
         taxon_list.append(taxon.text)
     protein_dict['taxon'] = taxon_list
 
+    # synonym saved
     gene_dict = {}
     for name in entry.find('gene').getchildren():
         if name.attrib == 'synonym':
