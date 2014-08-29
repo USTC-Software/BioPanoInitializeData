@@ -17,6 +17,7 @@ def delete_module():
     db = pymongo.MongoClient()[CONSTANT.DATABASE]
     db.node.remove({'TYPE': 'Module'})
 
+
 def parse():
     connect(CONSTANT.DATABASE)
     PATH = './kegg/module/mm.txt'
@@ -60,7 +61,7 @@ def main():
                 continue
     print 'All update successfully'
 
-    delete_module()
+    #delete_module()
 
 
 parse()

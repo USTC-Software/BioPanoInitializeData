@@ -68,7 +68,7 @@ fp_unedited = open(log_enzyme_unedited_path, 'w')
 enzyme_dict = {}
 for enzyme in db.node.find({'TYPE': 'Enzyme'}):
     if enzyme['_id'] not in edited_id_list:
-        enzyme_dict[enzyme['NAME']] = enzyme['GENES']
+        enzyme_dict[enzyme['ENTRY']] = enzyme['GENES']
 
 fp_unedited.write(str(enzyme_dict))
 fp_unedited.close()

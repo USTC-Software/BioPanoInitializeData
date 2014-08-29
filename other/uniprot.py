@@ -32,14 +32,14 @@ def setLink(doc1, doc2, type1, type2):
 count = 0
 for file in os.listdir(data_path):
     print 'Parsing ' + file
+    filepath = os.path.join(data_path, file)
     if not file.endswith('xml'):
         print 'continue'
         continue
     # resolve same name conflict
     gene_name = file.split('split')[0].split('.')[0]
-    filepath = os.path.join(data_path, file)
     protein_dict = {}
-    protein_dict['NAME'] = file.split('.')[0]
+    protein_dict['NAME'] = db.uniprot.find_one({'gene_name': gene_name})['protein_name']
     protein_dict['TYPE'] = 'Protein'
     gene = ET.parse(filepath)
     entry = gene.getroot().find('entry')

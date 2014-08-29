@@ -11,6 +11,7 @@ import CONSTANT
 class Module(DynamicDocument):
 
     ID = IntField()
+    NAME = StringField()
     REACTION = ListField(StringField(), default=[])
 
     meta = {
@@ -92,7 +93,7 @@ def main():
         node.data_save(parse_dict)
         node.save()
         fp.close()
-        print path + ' has saved successfully'
+        print node.NAME + ' has saved successfully'
 
 
 main()
