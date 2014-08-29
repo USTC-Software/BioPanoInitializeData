@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<uniprot xmlns="http://uniprot.org/uniprot" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://uniprot.org/uniprot http://www.uniprot.org/support/docs/uniprot.xsd">
+<uniprot>
 <entry dataset="Swiss-Prot" created="1994-10-01" modified="2014-03-19" version="72">
 <accession>P37635</accession>
 <accession>Q2M7G6</accession>
