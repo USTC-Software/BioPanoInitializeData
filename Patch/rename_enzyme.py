@@ -58,7 +58,7 @@ log_file.write('edited enzyme count: ' + str(edited_count) + '\n')
 log_file.write('edited enzyme list: \n' + str(edited_id_list) + '\n')
 fp_enzyme_edited.write(str(edited_id_list))
 
-log_file.clsoe()
+log_file.close()
 fp_enzyme_edited.close()
 
 ## 5 step: create enzyme log which has not been edited

@@ -11,6 +11,7 @@ data_path = './other/data/'
 #data_path = './data/'
 log_path = './log/uniprot_no_protein_list.txt'
 
+
 def setLink(doc1, doc2, type1, type2):
     if not type1:
         type1 = doc1['TYPE']
@@ -32,6 +33,7 @@ count = 0
 for file in os.listdir(data_path):
     print 'Parsing ' + file
     if not file.endswith('xml'):
+        print 'continue'
         continue
     # resolve same name conflict
     gene_name = file.split('split')[0].split('.')[0]

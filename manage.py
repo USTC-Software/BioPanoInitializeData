@@ -163,5 +163,6 @@ def main():
     #kegg_reaction()
 
 main()
+#uniprot_update()
 #product_process()
 #log_create()
