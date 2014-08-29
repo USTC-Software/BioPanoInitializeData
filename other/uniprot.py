@@ -9,7 +9,7 @@ from bson import ObjectId
 db = MongoClient()[CONSTANT.DATABASE]
 data_path = './other/data/'
 #data_path = './data/'
-log_path = './log'
+log_path = './log/uniprot_no_protein_list.txt'
 
 def setLink(doc1, doc2, type1, type2):
     if not type1:
