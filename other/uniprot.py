@@ -39,7 +39,6 @@ for file in os.listdir(data_path):
     # resolve same name conflict
     gene_name = file.split('split')[0].split('.')[0]
     protein_dict = {}
-    protein_dict['NAME'] = db.uniprot.find_one({'gene_name': gene_name})['protein_name']
     protein_dict['TYPE'] = 'Protein'
     gene = ET.parse(filepath)
     entry = gene.getroot().find('entry')
@@ -67,6 +66,8 @@ for file in os.listdir(data_path):
     for name in entry.find('gene').getchildren():
         if name.attrib == 'synonym':
             gene_dict['synonym'] = name.text
+        elif name.attrib == 'primary':
+            protein_dict['NAME'] = name.text
 
     protein_id = db.node.insert(protein_dict)
     protein_node = db.node.find_one({'_id': protein_id})
