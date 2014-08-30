@@ -52,10 +52,10 @@ class Module(DynamicDocument):
         self.REACTION = reaction_list
 
     def data_save(self, dict):
-        id_database = count.objects.filter(type='node')[0]
-        self.ID = id_database['value']
-        id_database['value'] += 1
-        id_database.save()
+        #id_database = count.objects.filter(type='node')[0]
+        #self.ID = id_database['value']
+        #id_database['value'] += 1
+        #id_database.save()
         self.TYPE = 'Module'
         for key in dict:
             text = dict[key]
@@ -91,6 +91,8 @@ def main():
         parse_dict = kegg_split(fp)
         node = Module()
         node.data_save(parse_dict)
+        if node['NAME'] is None:
+            continue
         node.save()
         fp.close()
         print node.NAME + ' has saved successfully'
