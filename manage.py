@@ -130,6 +130,7 @@ def rebuild():
     print 'run kegg_reaction importing from super manage.py'
     kegg_reaction()
     print 'run reaction connection from super manage.py'
+    db.node.create_index('NAME')
     kegg_connect()
     print 'run reaction function sort from super manage.py'
     kegg_reaction_function_link()

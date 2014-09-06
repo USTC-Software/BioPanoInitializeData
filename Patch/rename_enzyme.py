@@ -44,6 +44,8 @@ for gene_name in gene_exist_table.keys():
             db.node.update({'_id': enzyme_id}, {'$set': {'NAME': protein_name}})
             edited_count += 1
 
+## 3.1step: manually rename enzyme
+#db.node.find_one('ENTRY': 'EC')
 ## 4 step: create log
 fp_enzyme_edited = open(enzyme_log, 'w')
 log_file = open(log_path, 'w')
