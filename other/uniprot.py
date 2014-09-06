@@ -12,6 +12,12 @@ data_path = './other/data/'
 log_path = './log/uniprot_no_protein_list.txt'
 
 
+def convertName(database_name):
+    line = database_name.replace('-', '')
+    line = line.split('_')[0]
+    return line
+
+
 def setLink(doc1, doc2, type1, type2):
     if not type1:
         type1 = doc1['TYPE']
@@ -38,8 +44,12 @@ for file in os.listdir(data_path):
         continue
     # resolve same name conflict
     gene_name = file.split('split')[0].split('.')[0]
+    if 'split' in file:
+        uniprot_name = file.split('split')[1].split('.')[0]
+    else:
+        uniprot_name = convertName(gene_name)
     protein_dict = {}
-    protein_dict['NAME'] = db.uniprot.find_one({'gene_name': gene_name})['protein_name']
+    protein_dict['NAME'] = db.uniprot.find_one({'gene_name': uniprot_name})['protein_name']
     protein_dict['TYPE'] = 'Protein'
     gene = ET.parse(filepath)
     entry = gene.getroot().find('entry')

@@ -52,6 +52,8 @@ def main():
                     #Node set index to link
                     gene['EDGE'].append(gene_enzyme_link.id)
                     enzyme['EDGE'].append(gene_enzyme_link.id)
+                    gene.save()
+                    enzyme.save()
 
                     count_saved += 1
                 print str(count_saved) + ' link between gene and enzyme have been saved successfully'
