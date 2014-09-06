@@ -140,9 +140,6 @@ def rebuild():
     print 'patch 1 built in August'
     patch1()
 
-    print 'Fishing patch built in August 22'
-    #patch2()
-
     print 'working log creating'
     log_create()
 
@@ -152,6 +149,8 @@ def rebuild():
     print 'kegg rename'
     rename_enzyme()
 
+    print 'Fishing patch built in August 22'
+    patch2()
 
 def main():
     rebuild()
