@@ -58,9 +58,11 @@ def separate(enzyme):
         new_node = db.node.find_one({'_id': new_node_id})
         for another_node in another_node_list:
             if another_node['direct'] == 1:
-                setLink(new_node, another_node['node'], 'Enzyme', 'Reaction')
+                node = db.node.find_one({'_id': another_node['node']})
+                setLink(new_node, node, 'Enzyme', 'Reaction')
             elif another_node['direct'] == 0:
-                setLink(another_node['node'], new_node, 'Gene', 'Enzyme')
+                node = db.node.find_one({'_id': another_node['node']})
+                setLink(node, new_node, 'Gene', 'Enzyme')
 
     # Delete old node and link
     for edge in enzyme['EDGE']:
