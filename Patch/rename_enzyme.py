@@ -37,7 +37,7 @@ def separate(enzyme):
     # Get another node over the link and edit EDGE of another node
     another_node_list = []
     for edge in enzyme['EDGE']:
-        link = db.link.find_one({'_id': edge['_id']})
+        link = db.link.find_one({'_id': edge})
         if enzyme['_id'] == link['NODE1']:
             another_node_list.append({'node': link['NODE2'], 'direct': 1})
             db.node.update({'_id': link['NODE2']}, {'$pop': {'EDGE': edge}})

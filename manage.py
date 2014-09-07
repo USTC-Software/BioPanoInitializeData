@@ -163,6 +163,7 @@ def main():
     #kegg_reaction()
 
 main()
+#rename_enzyme
 #uniprot_update()
 #product_process()
 #log_create()
