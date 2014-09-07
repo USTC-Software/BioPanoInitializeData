@@ -33,7 +33,7 @@ def setLink(doc1, doc2, type1, type2):
 
 
 def separate(enzyme):
-    print enzyme['NAME'] + ' is separating'
+    print enzyme['ENTRY'] + ' is separating'
     # Get another node over the link and edit EDGE of another node
     another_node_list = []
     for edge in enzyme['EDGE']:
