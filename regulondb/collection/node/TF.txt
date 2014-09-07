@@ -50,6 +50,7 @@ ECK120012664	DeoR	DeoR	DeoR-Deoxyribose-5-phosphate	[IE|W|Inferred from experime
 ECK120015690	DhaR	DhaR	DhaR-DhaK	[IMP|W|Inferred from mutant phenotype]	15616579
 ECK120029345	DicA			"[IFC|S|Inferred by functional complementation], [HIFS|W|Human inference of function from sequence], [IEP|W|Inferred from expression pattern], [APPHINH|S|Assay of protein purified to homogeneity from its native host]"	"23028867, 3041373, 3053647"
 ECK125147337	DinJ				
+ECK125141203	YafQ				
 ECK125141203	DinJ-YafQ			"[IDA|S|Inferred from direct assay], [IGI|W|Inferred from genetic interaction]"	"17263853, 19210620, 21788497"
 ECK120011903	DnaA	DnaA-ATP	DnaA	"[IPI|W|Inferred from physical interaction], [APPH|S|Assay of protein purified  to homogeneity], [IEP|W|Inferred from expression pattern]"	"11160809, 20487274, 2540187, 8825783"
 ECK120034476	DpiA	DpiA-P<sup>asp</sup>	DpiA	[APPHINH|S|Assay of protein purified to homogeneity from its native host]	18997424
@@ -70,6 +71,7 @@ ECK125141939	FliZ			[IMP|W|Inferred from mutant phenotype]	18765794
 ECK120013118	FucR	FucR-L-fuculose-1-phosphate	FucR	"[HIFS|W|Human inference of function from sequence], [IEP|W|Inferred from expression pattern]"	"3005235, 8955387"
 ECK120033465	Fur	Fur-Mn<sup>2+</sup>|Fur-Fe<sup>2+</sup>	Fur		"1868094, 2015825, 2823881, 2993806"
 ECK120012092	GadE			[IE|W|Inferred from experiment]	"12399493, 12426343, 12657056, 12694615, 12704134, 12940989, 14702398"
+ECK125140813	RcsB				
 ECK125140813	GadE-RcsB				
 ECK120011465	GadW			"[IE|W|Inferred from experiment], [APPH|S|Assay of protein purified  to homogeneity]"	12446650
 ECK120011458	GadX			"[GEA|W|Gene expression analysis], [APPH|S|Assay of protein purified  to homogeneity]"	"11976288, 12446650"
@@ -112,6 +114,7 @@ ECK120011412	MarA			[IE|W|Inferred from experiment]	"8383113, 8491710, 8522515"
 ECK120013191	MarR	MarR	"MarR-Sodium salicylate|MarR-Menadione|MarR-Phenazine methosulfate|MarR-Plumbagin|MarR-2,4-dinitrophenol|MarR-Benzoate|MarR-salicylate|MarR-Paraquat"	[APPH|S|Assay of protein purified  to homogeneity]	"11751765, 7768850, 7777530"
 ECK125141911	MatA			"[AIFS|W|Automated inference of function from sequence], [IEP|W|Inferred from expression pattern], [APPHINH|S|Assay of protein purified to homogeneity from its native host]"	"15556475, 22422754"
 ECK125140737	MazE				
+ECK125140743	MazF				
 ECK125140743	MazE-MazF			[IE|W|Inferred from experiment]	
 ECK120051441	McbR			"[APPPHH|W|Assay of protein partially-purified from a heterologous host], [AIFS|W|Automated inference of function from sequence], [IEP|W|Inferred from expression pattern], [AUP|W|Assay of unpurified protein]"	"15556475, 18309357, 20713450"
 ECK120012347	MelR	MelR|MelR-Melibiose		"[IMP|W|Inferred from mutant phenotype], [APPH|S|Assay of protein purified  to homogeneity], [IEP|W|Inferred from expression pattern]"	"10747919, 10760179, 16621812, 18346968"
@@ -160,8 +163,10 @@ ECK125162247	RclR			[HIFS|W|Human inference of function from sequence]	"10734204
 ECK120033010	RcnR	RcnR	RcnR-Co<sup>2+</sup>|RcnR-Ni <sup>2+</sup>	"[GEA|W|Gene expression analysis], [APPH|S|Assay of protein purified  to homogeneity]"	"16956381, 17120142, 19703465"
 ECK125140814	RcsAB				
 ECK120011324	RcsB				
+ECK120034503	BglJ				
 ECK120034503	RcsB-BglJ			"[IMP|W|Inferred from mutant phenotype], [IPI|W|Inferred from physical interaction], [IFC|S|Inferred by functional complementation], [IEP|W|Inferred from expression pattern], [APPHINH|S|Assay of protein purified to homogeneity from its native host]"	20952573
 ECK120048934	RelB			[APPH|S|Assay of protein purified  to homogeneity]	10501926
+ECK125140812	RelE				
 ECK125140812	RelB-RelE				
 ECK120012877	RhaR	RhaR-L-rhamnose		"[APPH|S|Assay of protein purified  to homogeneity], [HIFS|W|Human inference of function from sequence], [IEP|W|Inferred from expression pattern]"	"10464186, 17513476"
 ECK120012337	RhaS	RhaS-L-rhamnose		"[IMP|W|Inferred from mutant phenotype], [IPI|W|Inferred from physical interaction], [APPH|S|Assay of protein purified  to homogeneity], [HIFS|W|Human inference of function from sequence], [IEP|W|Inferred from expression pattern]"	"10464186, 10940041, 15342598, 17513476, 18366439"
@@ -190,6 +195,7 @@ ECK120013786	XylR	XylR-Xylose	XylR	"[APPH|S|Assay of protein purified  to homoge
 ECK120012313	YdeO			"[GEA|W|Gene expression analysis], [IMP|W|Inferred from mutant phenotype], [APPH|S|Assay of protein purified  to homogeneity], [IEP|W|Inferred from expression pattern]"	"12399493, 12694615, 15489450, 20603130, 9409145"
 ECK125158221	YdfH			"[HIFS|W|Human inference of function from sequence], [IEP|W|Inferred from expression pattern], [APPHINH|S|Assay of protein purified to homogeneity from its native host]"	"10734204, 15556475, 22972332"
 ECK125135147	YefM			[APPH|S|Assay of protein purified  to homogeneity]	17170003
+ECK120048749	YoeB				
 ECK120048749	YefM-YoeB			[APPH|S|Assay of protein purified  to homogeneity]	17170003
 ECK125145850	YehT			"[IPI|W|Inferred from physical interaction], [IEP|W|Inferred from expression pattern], [APPHINH|S|Assay of protein purified to homogeneity from its native host]"	22685278
 ECK120013665	YeiL			"[GEA|W|Gene expression analysis], [HIFS|W|Human inference of function from sequence]"	"11101674, 9278503"
