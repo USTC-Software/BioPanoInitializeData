@@ -156,17 +156,17 @@ def rebuild():
     print 'uniprot updating'
     uniprot_update()
 
-    #print 'kegg rename'
-    #rename_enzyme()
+    print 'kegg rename'
+    rename_enzyme()
 
-    #print '\nAdd Sysname to Gene'
-    #gene_sysname()
+    print '\nAdd Sysname to Gene'
+    gene_sysname()
 
-    #print 'Sort link type'
-    #sort_link()
+    print 'Sort link type'
+    sort_link()
 
-    #print 'Fishing patch built in August 22'
-    #patch2()
+    print 'Fishing patch built in August 22'
+    patch2()
 
 
 def main():
@@ -179,5 +179,5 @@ def main():
     #kegg_connect()
     #kegg_reaction()
 
-#main()
-rename_enzyme()
+main()
+#rename_enzyme()
