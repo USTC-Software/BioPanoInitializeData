@@ -179,5 +179,4 @@ def main():
     #kegg_connect()
     #kegg_reaction()
 
-#main()
-gene_sysname()
+main()

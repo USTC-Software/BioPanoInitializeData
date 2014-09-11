@@ -52,8 +52,8 @@ def separate(enzyme):
 
     # Create new node
     new_node_list = []
+    enzyme.pop('_id')
     for NAME in enzyme['NAME']:
-        enzyme.pop('_id')
         id = db.node.insert(enzyme)
         db.node.update({'_id': id}, {'$set': {'NAME': NAME, 'EDGE': []}})
         new_node_list.append(id)
@@ -66,7 +66,6 @@ def separate(enzyme):
                 node = db.node.find_one({'_id': another_node['node']})
                 setLink(new_node, node, 'Enzyme', 'Reaction')
             elif another_node['direct'] == 0:
-                ##  need to be edited , to considering gene like insAB1
                 match_flat = new_node['NAME'] == db.uniprot.find_one({'gene_name': base_name_to_uni(another_node['NAME'])})['protein_name']
                 if match_flat is False:
                     continue

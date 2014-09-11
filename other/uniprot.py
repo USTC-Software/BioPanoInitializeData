@@ -44,6 +44,8 @@ for file in os.listdir(data_path):
         continue
     # resolve same name conflict
     gene_name = file.split('split')[0].split('.')[0]
+    if db.node.find_one({'NAME': gene_name, 'TYPE': 'Gene'}) is None:
+        continue
     if 'split' in file:
         uniprot_name = file.split('split')[1].split('.')[0]
     else:
