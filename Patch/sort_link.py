@@ -8,8 +8,8 @@ db = MongoClient()[CONSTANT.DATABASE]
 
 for link in db.link.find():
     db.link.update({'_id': link['_id']}, {'$set': {'TYPE': node_link_type[link['TYPE1']]}})
-    print 'link[\'TYPE\']: ' + link['TYPE1']
-    print 'node_link_type[link[\'TYPE\']]: '
+    print 'link[\'TYPE1\']: ' + link['TYPE1']
+    print 'node_link_type[link[\'TYPE1\']]: ' + node_link_type[link['TYPE1']]
     if link['TYPE'] == 'Tiaokong':
         db.link.update({'_id': link['_id']}, {'$set': {'TYPE': link['Function']}})
 
