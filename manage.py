@@ -179,5 +179,5 @@ def main():
     #kegg_connect()
     #kegg_reaction()
 
-#main()
-rename_enzyme()
+main()
+#rename_enzyme()
