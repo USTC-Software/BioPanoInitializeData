@@ -112,6 +112,16 @@ def rename_enzyme():
     execfile(path, {})
 
 
+def gene_sysname():
+    path = './Patch/sysname_gene.py'
+    execfile(path, {})
+
+
+def sort_link():
+    path = './Patch/sort_link.py'
+    execfile(path, {})
+
+
 def rebuild():
     client = MongoClient()
     db = client[CONSTANT.DATABASE]
@@ -149,8 +159,15 @@ def rebuild():
     print 'kegg rename'
     rename_enzyme()
 
+    print '\nAdd Sysname to Gene'
+    gene_sysname()
+
+    print 'Sort link type'
+    sort_link()
+
     print 'Fishing patch built in August 22'
     patch2()
+
 
 def main():
     rebuild()
@@ -162,9 +179,5 @@ def main():
     #kegg_connect()
     #kegg_reaction()
 
-main()
-#rename_enzyme
-#uniprot_update()
-#product_process()
-#log_create()
-#kegg_node(1)
+#main()
+sort_link()

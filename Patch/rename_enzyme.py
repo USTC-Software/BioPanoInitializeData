@@ -14,6 +14,11 @@ enzyme_log = './log/edited_enzyme_log.txt'
 multi_gene_log = open('./log/with_multigene_enzyme.txt', 'w+')
 
 
+def base_name_to_uni(database_name):
+    uni_name = database_name.replace('-', '').split('_')[0]
+    return uni_name
+
+
 def setLink(doc1, doc2, type1, type2):
     if not type1:
         type1 = doc1['TYPE']
@@ -61,6 +66,10 @@ def separate(enzyme):
                 node = db.node.find_one({'_id': another_node['node']})
                 setLink(new_node, node, 'Enzyme', 'Reaction')
             elif another_node['direct'] == 0:
+                ##  need to be edited , to considering gene like insAB1
+                match_flat = new_node['NAME'] == db.uniprot.find_one({'gene_name': base_name_to_uni(another_node['NAME'])})['protein_name']
+                if match_flat is False:
+                    continue
                 node = db.node.find_one({'_id': another_node['node']})
                 setLink(node, new_node, 'Gene', 'Enzyme')
 
@@ -135,7 +144,7 @@ for enzyme in db.node.find({'GENES': {'$not': {'$size': 1}}, 'TYPE': 'Enzyme'}):
     multi_gene_log.write(enzyme['ENTRY'] + '\t' + str(enzyme['GENES']) + '\t' + str(enzyme['NAME']) + '\n')
     if len(enzyme['NAME']) > 1:
         separate(enzyme)
-    db.node.update({'_id': enzyme['_id']}, {'$set': {'NAME': enzyme['NAME'][0]}})
+    #db.node.update({'_id': enzyme['_id']}, {'$set': {'NAME': enzyme['NAME'][0]}})
 
 ## 6 step: create enzyme log which has not been edited
 log_enzyme_unedited_path = './log/enzyme_unedited.txt'

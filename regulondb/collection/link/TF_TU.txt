@@ -1,4 +1,4 @@
-TF	TU	"Regulatory effect of the TF on the regulated gene (+ activator, - repressor, +- dual, ? unknown)"	Evidence that supports the existence of the regulatory interaction
+TF	TU	Function	Evidence that supports the existence of the regulatory interaction
 AcrR	acrAB[acrAp]	-	"[BCE, GEA]"
 AcrR	acrR[acrRp]	-	"[AIBSCS, BCE, BPP, GEA, HIBSCS]"
 AcrR	micF[micFp]	-	[AIBSCS]

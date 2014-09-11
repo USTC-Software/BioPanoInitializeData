@@ -1,4 +1,4 @@
-sRNA	Gene	Binding site left end position in the genome	Binding site right end position in the genome	DNA strand of the regulated gene	"Function (+ activation, - repression, +- dual, ? unknown)"	Binding site sequence	Regulation type	Mechanism	Evidence that supports the existence of the small RNA
+sRNA	Gene	Binding site left end position in the genome	Binding site right end position in the genome	DNA strand of the regulated gene	Function	Binding site sequence	Regulation type	Mechanism	Evidence that supports the existence of the small RNA
 IpeX	ompF			reverse	-		unknown	post-transcriptional regulation	"[GEA|W|Gene expression analysis],[IMP|W|Inferred from mutant phenotype]"
 IpeX	ompC			reverse	-		unknown	post-transcriptional regulation	"[GEA|W|Gene expression analysis],[IMP|W|Inferred from mutant phenotype]"
 IS129	ryfA			forward	?		antisense	post-transcriptional regulation	

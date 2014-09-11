@@ -44,6 +44,7 @@ def main():
     #print dict
     db.drop_collection('uniprot')
     db.uniprot.insert(dict)
+    db.uniprot.create_index('gene_name')
 
     gene_exist_list = []
     gene_multi_exit_list = []
