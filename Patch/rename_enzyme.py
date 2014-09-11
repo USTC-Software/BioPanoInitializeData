@@ -68,7 +68,10 @@ def separate(enzyme):
                 setLink(new_node, node, 'Enzyme', 'Reaction')
             elif another_node['direct'] == 0:
                 another_name = db.node.find_one({'_id': another_node['node']})['NAME']
-                protein_name = db.uniprot.find_one({'gene_name': base_name_to_uni(another_name)})['protein_name']
+                uni_node = db.uniprot.find_one({'gene_name': base_name_to_uni(another_name)})
+                if uni_node is None:
+                    continue
+                protein_name = uni_node['protein_name']
                 match_flat = (new_node['NAME'] == protein_name)
                 if match_flat is False:
                     continue
