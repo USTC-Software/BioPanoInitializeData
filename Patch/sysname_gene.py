@@ -16,6 +16,6 @@ for gene in db.node.find({'TYPE': 'Gene'}):
     uni_log = db.uniprot.find_one({'gene_name': uni_name})
     if uni_log is not None:
         sysname_list = uni_log['gene_name']
-        sysname_list.pop(uni_name)
+        sysname_list.remove(uni_name)
         db.node.update({'_id': gene['_id']}, {'$set': {'SYSNAME': sysname_list}})
 print 'SYSNAME ADDING SUCCESS'
