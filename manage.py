@@ -180,4 +180,4 @@ def main():
     #kegg_reaction()
 
 #main()
-sort_link()
+gene_sysname()
