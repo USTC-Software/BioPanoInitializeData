@@ -52,8 +52,9 @@ def separate(enzyme):
 
     # Create new node
     new_node_list = []
-    enzyme.pop('_id')
+    #enzyme.pop('_id')
     for NAME in enzyme['NAME']:
+        enzyme.pop('_id')
         id = db.node.insert(enzyme)
         db.node.update({'_id': id}, {'$set': {'NAME': NAME, 'EDGE': []}})
         new_node_list.append(id)
