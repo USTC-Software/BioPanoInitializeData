@@ -165,8 +165,8 @@ def rebuild():
     print 'Sort link type'
     sort_link()
 
-    print 'Fishing patch built in August 22'
-    patch2()
+    #print 'Fishing patch built in August 22'
+    #patch2()
 
 
 def main():
