@@ -149,7 +149,8 @@ for enzyme in db.node.find({'GENES': {'$not': {'$size': 1}}, 'TYPE': 'Enzyme'}):
     multi_gene_log.write(enzyme['ENTRY'] + '\t' + str(enzyme['GENES']) + '\t' + str(enzyme['NAME']) + '\n')
     if len(enzyme['NAME']) > 1:
         separate(enzyme)
-    #db.node.update({'_id': enzyme['_id']}, {'$set': {'NAME': enzyme['NAME'][0]}})
+    # un-listize for Enzyme which only have one name but saved in list form
+    db.node.update({'_id': enzyme['_id']}, {'$set': {'NAME': enzyme['NAME'][0]}})
 
 ## 6 step: create enzyme log which has not been edited
 log_enzyme_unedited_path = './log/enzyme_unedited.txt'
