@@ -41,14 +41,15 @@ def separate(enzyme):
     print enzyme['ENTRY'] + ' is separating'
     # Get another node over the link and edit EDGE of another node
     another_node_list = []
-    for edge in enzyme['EDGE']:
-        link = db.link.find_one({'_id': edge})
+    for edge_id in enzyme['EDGE']:
+        link = db.link.find_one({'_id': edge_id})
         if enzyme['_id'] == link['NODE1']:
             another_node_list.append({'node': link['NODE2'], 'direct': 1})
-            db.node.update({'_id': link['NODE2']}, {'$pop': {'EDGE': edge}})
+            # edit another node EDGE, and delete this link later
+            db.node.update({'_id': link['NODE2']}, {'$pop': {'EDGE': edge_id}})
         else:
             another_node_list.append({'node': link['NODE1'], 'direct': 0})
-            db.node.update({'_id': link['NODE1']}, {'$pop': {'EDGE': edge}})
+            db.node.update({'_id': link['NODE1']}, {'$pop': {'EDGE': edge_id}})
 
     # Create new node
     new_node_list = []
@@ -68,13 +69,18 @@ def separate(enzyme):
                 setLink(new_node, node, 'Enzyme', 'Reaction')
             elif another_node['direct'] == 0:
                 another_name = db.node.find_one({'_id': another_node['node']})['NAME']
+                print 'Gene name: ' + another_name
                 uni_node = db.uniprot.find_one({'gene_name': base_name_to_uni(another_name)})
                 if uni_node is None:
+                    print 'This gene can\'t be found in uniprot'
                     continue
+                print 'this gene is in uniprot'
                 protein_name = uni_node['protein_name']
                 match_flat = (new_node['NAME'] == protein_name)
                 if match_flat is False:
+                    print 'This gene is not match this enzyme'
                     continue
+                print 'this gene is link to this enzyme\n\n'
                 node = db.node.find_one({'_id': another_node['node']})
                 setLink(node, new_node, 'Gene', 'Enzyme')
 
@@ -143,7 +149,7 @@ log_file.close()
 fp_enzyme_edited.close()
 
 ## 5 step: separate EC node to several Enzyme node
-multi_gene_log.write('ENTRY\tGENES\tNAME\n')
+'''multi_gene_log.write('ENTRY\tGENES\tNAME\n')
 for enzyme in db.node.find({'TYPE': 'Enzyme'}):
     # log create
     multi_gene_log.write(enzyme['ENTRY'] + '\t' + str(enzyme['GENES']) + '\t' + str(enzyme['NAME']) + '\n')
@@ -152,7 +158,7 @@ for enzyme in db.node.find({'TYPE': 'Enzyme'}):
     # un-listize for Enzyme which only have one name but saved in list form
     else:
         db.node.update({'_id': enzyme['_id']}, {'$set': {'NAME': enzyme['NAME'][0]}})
-
+'''
 ## 6 step: create enzyme log which has not been edited
 log_enzyme_unedited_path = './log/enzyme_unedited.txt'
 fp_unedited = open(log_enzyme_unedited_path, 'w')
