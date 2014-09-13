@@ -185,6 +185,6 @@ def main():
     #kegg_connect()
     #kegg_reaction()
 
-#main()
-alignment_data()
+main()
+#alignment_data()
 #rename_enzyme()

@@ -57,6 +57,22 @@ def add_ref_utr(path):
             dic['node_id'] = gene['_id']
             dic['TYPE'] = 'Gene'
             dic['SEQUENCE'] = gene['Gene sequence']
+            db.u_t_r.insert(dic)
+
+    for terminator in db.node.find({'TYPE': 'Terminator'}):
+        dic = {}
+        if 'Sequence' in terminator.keys():
+            dic['node_id'] = terminator['_id']
+            dic['TYPE'] = 'Terminator'
+            dic['SEQUENCE'] = terminator['Sequence']
+            db.u_t_r.insert(dic)
+
+    for promoter in db.u_t_r.find({'TYPE': 'O_T_P'}):
+        pro_node = db.node.find_one({'NAME': promoter['PROMOTER_NAME']})
+        if pro_node is not None:
+            db.u_t_r.update({'_id': promoter['_id']}, {'$set': {'node_id': pro_node['_id']}})
+        else:
+            db.u_t_r.remove({'_id': promoter['_id']})
 
 add_ref_utr(SOURCE_PATH)
 
