@@ -38,6 +38,7 @@ def setLink(doc1, doc2, type1, type2):
 
 
 def separate(enzyme):
+    origin_id = enzyme['_id']
     print enzyme['ENTRY'] + ' is separating'
     # Get another node over the link and edit EDGE of another node
     another_node_list = []
@@ -56,6 +57,7 @@ def separate(enzyme):
     #enzyme.pop('_id')
     for NAME in enzyme['NAME']:
         enzyme.pop('_id')
+        ## ALERT: Insert function will change enzyme.
         id = db.node.insert(enzyme)
         db.node.update({'_id': id}, {'$set': {'NAME': NAME, 'EDGE': []}})
         new_node_list.append(id)
@@ -85,6 +87,7 @@ def separate(enzyme):
                 setLink(node, new_node, 'Gene', 'Enzyme')
 
     # Delete old node and link
+    enzyme = db.node.find_one({'_id': origin_id})
     for edge in enzyme['EDGE']:
         db.link.remove({'_id': edge})
     db.node.remove({'_id': enzyme['_id']})
@@ -149,7 +152,7 @@ log_file.close()
 fp_enzyme_edited.close()
 
 ## 5 step: separate EC node to several Enzyme node
-'''multi_gene_log.write('ENTRY\tGENES\tNAME\n')
+multi_gene_log.write('ENTRY\tGENES\tNAME\n')
 for enzyme in db.node.find({'TYPE': 'Enzyme'}):
     # log create
     multi_gene_log.write(enzyme['ENTRY'] + '\t' + str(enzyme['GENES']) + '\t' + str(enzyme['NAME']) + '\n')
@@ -158,7 +161,7 @@ for enzyme in db.node.find({'TYPE': 'Enzyme'}):
     # un-listize for Enzyme which only have one name but saved in list form
     else:
         db.node.update({'_id': enzyme['_id']}, {'$set': {'NAME': enzyme['NAME'][0]}})
-'''
+
 ## 6 step: create enzyme log which has not been edited
 log_enzyme_unedited_path = './log/enzyme_unedited.txt'
 fp_unedited = open(log_enzyme_unedited_path, 'w')
