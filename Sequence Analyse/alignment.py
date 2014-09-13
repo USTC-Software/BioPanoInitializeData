@@ -4,6 +4,7 @@ import os
 import pymongo
 import CONSTANT
 
+
 def main():
     db = pymongo.Connection()[CONSTANT.DATABASE]
     fp = './sequence.txt'

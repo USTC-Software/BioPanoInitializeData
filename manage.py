@@ -121,6 +121,9 @@ def sort_link():
     path = './Patch/sort_link.py'
     execfile(path, {})
 
+def alignment_data():
+    path = './Sequence Analyse/UTR_importing.py'
+    execfile(path, {})
 
 def rebuild():
     client = MongoClient()
@@ -165,6 +168,9 @@ def rebuild():
     print 'Sort link type'
     sort_link()
 
+    print 'u_t_r database importing'
+    alignment_data()
+
     print 'Fishing patch built in August 22'
     patch2()
 
@@ -179,5 +185,6 @@ def main():
     #kegg_connect()
     #kegg_reaction()
 
-main()
+#main()
+alignment_data()
 #rename_enzyme()
