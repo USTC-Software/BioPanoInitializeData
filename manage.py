@@ -121,6 +121,7 @@ def sort_link():
     path = './Patch/sort_link.py'
     execfile(path, {})
 
+
 def alignment_data():
     path = './Sequence Analyse/UTR_importing.py'
     execfile(path, {})
@@ -143,6 +144,7 @@ def rebuild():
     print 'run kegg_reaction importing from super manage.py'
     kegg_reaction()
     print 'run reaction connection from super manage.py'
+
     db.node.create_index('NAME')
     kegg_connect()
     print 'run reaction function sort from super manage.py'
@@ -150,7 +152,7 @@ def rebuild():
     print 'run link setting between gene and enzyme from super manage.py'
     database_link()
 
-    print 'patch 1 built in August'
+    print 'patch 1 built in August :adding alignment database'
     patch1()
 
     print 'working log creating'
@@ -167,9 +169,6 @@ def rebuild():
 
     print 'Sort link type'
     sort_link()
-
-    print 'u_t_r database importing'
-    alignment_data()
 
     print 'Fishing patch built in August 22'
     patch2()

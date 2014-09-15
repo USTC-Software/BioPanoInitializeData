@@ -50,8 +50,8 @@ def reaction_compound_linkset():
     cursor.close()
     for reaction in reaction_list:
         reaction_counter += 1
-        if reaction_counter % 100 == 0:
-            print str(reaction_counter) + ' reactions has been analysed,and now ' + reaction['NAME'] + ' is on the process'
+        #if reaction_counter % 100 == 0:
+            #print str(reaction_counter) + ' reactions has been analysed,and now ' + reaction['NAME'] + ' is on the process'
         ## reaction is a node whose TYPE is Reaction
         for reactant in reaction['REACTANTS']:
             #reactant is a String Form

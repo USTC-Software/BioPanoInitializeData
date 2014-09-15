@@ -105,7 +105,7 @@ def savedict(dic, typ, collection):
 
         # Make sure about only one log with same NAME
         if db.node.find_one({'NAME': dic['NAME'], 'TYPE': dic['TYPE']}) or dic['NAME'] == '' or dic['NAME'] == 'Phantom Gene':
-            print 'NAME: ' + dic['NAME'] + '  TYPE: ' + dic['TYPE']
+            #print 'NAME: ' + dic['NAME'] + '  TYPE: ' + dic['TYPE']
             return -1
 
         exec "db.%s.insert(dic)" % (collection, )
@@ -158,7 +158,7 @@ def add_ref_father(path):
             father = db.node.find_one({'TYPE': father_type, 'NAME': father_name})
             child = db.node.find_one({'TYPE': child_type, 'NAME': child_name})
             if (not father) or (not child):
-                print "not found"
+                #print "not found"
                 continue
             # add father id to child
             if not child.has_key('FATHER'):
@@ -173,4 +173,4 @@ def add_ref_father(path):
             else:
                 if not child['_id'] in father['CHILD']:
                     db.node.update({'TYPE': father_type, 'NAME': father_name}, {"$push": {"CHILD": child['_id']}})
-            print 'child: ' + str(child['ID']) + '  father: ' + str(father['ID'])
+            #print 'child: ' + str(child['ID']) + '  father: ' + str(father['ID'])

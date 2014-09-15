@@ -105,7 +105,7 @@ def main():
         node.data_save(parse_dict)
         node.save()
         fp.close()
-        print path + ' has saved successfully'
+        #print path + ' has saved successfully'
         count += 1
 
     ## Keep the Enzyme which appear in ECO

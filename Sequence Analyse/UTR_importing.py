@@ -75,4 +75,6 @@ def add_ref_utr(path):
             db.u_t_r.remove({'_id': promoter['_id']})
 
 add_ref_utr(SOURCE_PATH)
-
+db.u_t_r.create_index('SEQUENCE')
+db.u_t_r.create_index('SEQUENCE_5')
+db.u_t_r.create_index('SEQUENCE_3')
