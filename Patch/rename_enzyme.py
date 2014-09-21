@@ -93,7 +93,7 @@ def separate(enzyme):
     db.node.remove({'_id': enzyme['_id']})
 
 ## 1 step: rename kegg data directly
-db.node.update({'$or': [{'TYPE':'Compound'}, {'TYPE':'Enzyme'}]}, {'$rename': {'NAME': 'ENTRY'}}, multi=True)
+db.node.update({'$or': [{'TYPE':'Compound'}, {'TYPE':'Enzyme'}]}, {'$rename': {'NAME': 'Identifier'}}, multi=True)
 db.node.update({'TYPE': 'Compound'}, {'$rename': {'NAME_KEGG': 'NAME'}}, multi=True)
 db.node.update({'TYPE': 'Enzyme'}, {'$set': {'NAME': []}}, multi=True)
 

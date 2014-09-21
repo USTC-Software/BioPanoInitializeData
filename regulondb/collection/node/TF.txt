@@ -1,4 +1,4 @@
-Transcription Factor (TF) identifier assigned by RegulonDB	NAME	TF Active Conformations	TF Inactive Conformations	"Evidence that supports the TF [Evidence name|Evidence type: S = Strong, W = Weak| Evidence code]"	PMID list
+Identifier	NAME	TF Active Conformations	TF Inactive Conformations	"Evidence that supports the TF [Evidence name|Evidence type: S = Strong, W = Weak| Evidence code]"	PMID list
 ECK125140816	AccB				
 ECK120015994	AcrR	AcrR	AcrR-Ethidium|AcrR-R6G|AcrR-Proflavin	"[GEA|W|Gene expression analysis], [IMP|W|Inferred from mutant phenotype], [APPH|S|Assay of protein purified  to homogeneity], [IEP|W|Inferred from expression pattern]"	8821940
 ECK120012595	Ada	Ada-Methylated|Ada		"[IMP|W|Inferred from mutant phenotype], [IPI|W|Inferred from physical interaction], [HIFS|W|Human inference of function from sequence]"	"10049384, 11073893, 16452614, 2982792, 2987251, 3047400, 6092060, 7556074, 7713936, 7937881, 8676855, 8720133, 9582376"
