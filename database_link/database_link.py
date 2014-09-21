@@ -56,7 +56,7 @@ def main():
                     enzyme.save()
 
                     count_saved += 1
-                print str(count_saved) + ' link between gene and enzyme have been saved successfully'
+                #print str(count_saved) + ' link between gene and enzyme have been saved successfully'
         count_searched += 1
     print str(count_searched) + ' enzymes have been searched'
 

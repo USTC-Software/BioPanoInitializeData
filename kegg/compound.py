@@ -25,6 +25,7 @@ class Compound(DynamicDocument):
 
     def name_set(self, text):
         text = text.rstrip(string.letters + ' \n')
+        text = text.split(';')
         self.NAME = text.lstrip()
 
     def normal_set(self, field, text):

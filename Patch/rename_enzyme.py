@@ -39,7 +39,7 @@ def setLink(doc1, doc2, type1, type2):
 
 def separate(enzyme):
     origin_id = enzyme['_id']
-    print enzyme['ENTRY'] + ' is separating'
+    #print enzyme['ENTRY'] + ' is separating'
     # Get another node over the link and edit EDGE of another node
     another_node_list = []
     for edge_id in enzyme['EDGE']:
@@ -74,15 +74,15 @@ def separate(enzyme):
                 print 'Gene name: ' + another_name
                 uni_node = db.uniprot.find_one({'gene_name': base_name_to_uni(another_name)})
                 if uni_node is None:
-                    print 'This gene can\'t be found in uniprot'
+                    #print 'This gene can\'t be found in uniprot'
                     continue
-                print 'this gene is in uniprot'
+                #print 'this gene is in uniprot'
                 protein_name = uni_node['protein_name']
                 match_flat = (new_node['NAME'] == protein_name)
                 if match_flat is False:
-                    print 'This gene is not match this enzyme'
+                    #print 'This gene is not match this enzyme'
                     continue
-                print 'this gene is link to this enzyme\n\n'
+                #print 'this gene is link to this enzyme\n\n'
                 node = db.node.find_one({'_id': another_node['node']})
                 setLink(node, new_node, 'Gene', 'Enzyme')
 
