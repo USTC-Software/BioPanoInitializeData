@@ -12,7 +12,7 @@ import CONSTANT
 class Compound(DynamicDocument):
     ID = IntField()
     NAME = StringField()
-    NAME_KEGG = StringField()
+    NAME_KEGG = ListField(StringField())
     EXACT_MASS = FloatField()
     MOL_WEIGHT = FloatField()
     REMARK = StringField()
@@ -25,8 +25,12 @@ class Compound(DynamicDocument):
 
     def name_set(self, text):
         text = text.rstrip(string.letters + ' \n')
-        text = text.split(';')
         self.NAME = text.lstrip()
+
+    def kegg_name_set(self, text):
+        text = text.replace(' ', '')
+        text = text.split(';')
+        self.NAME_KEGG = text
 
     def normal_set(self, field, text):
         text = text.replace(' ', '')
@@ -63,7 +67,7 @@ class Compound(DynamicDocument):
             elif key == 'REFERENCE':
                 self.reference_set(text)
             elif key == 'NAME':
-                self.normal_set('NAME_KEGG', text)
+                self.kegg_name_set('NAME_KEGG', text)
             else:
                 self.normal_set(key, text)
 
