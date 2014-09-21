@@ -67,7 +67,7 @@ class Compound(DynamicDocument):
             elif key == 'REFERENCE':
                 self.reference_set(text)
             elif key == 'NAME':
-                self.kegg_name_set('NAME_KEGG', text)
+                self.kegg_name_set(text)
             else:
                 self.normal_set(key, text)
 
