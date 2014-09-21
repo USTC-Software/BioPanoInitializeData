@@ -128,11 +128,11 @@ for gene_name in gene_exist_table.keys():
             edited_count += 1
 
 ## 3.1step: manually rename enzyme
-db.node.update({'ENTRY': 'EC 3.5.1.2'}, {'$set': {'NAME': ['GlsA', 'GlsB']}})  # gene glsA\glsB
-db.node.update({'ENTRY': 'EC 2.1.1.223'}, {'$set': {'NAME': 'TrmN'}})   # gene trmN
+db.node.update({'Identifier': 'EC 3.5.1.2'}, {'$set': {'NAME': ['GlsA', 'GlsB']}})  # gene glsA\glsB
+db.node.update({'Identifier': 'EC 2.1.1.223'}, {'$set': {'NAME': 'TrmN'}})   # gene trmN
 # db.node.update({'NAME': 'trmN', 'TYPE': 'Gene'}, {'$push': {''}})
-db.node.update({'ENTRY': 'EC 1.2.1.19'}, {'$set': {'NAME': 'AdbH'}})   # gene patD
-db.node.update({'ENTRY': 'EC 3.5.3.26'}, {'$set': {'NAME': 'YlbA'}})    # gene allE
+db.node.update({'Identifier': 'EC 1.2.1.19'}, {'$set': {'NAME': 'AdbH'}})   # gene patD
+db.node.update({'Identifier': 'EC 3.5.3.26'}, {'$set': {'NAME': 'YlbA'}})    # gene allE
 
 ## 4 step: create log
 fp_enzyme_edited = open(enzyme_log, 'w')
@@ -152,10 +152,10 @@ log_file.close()
 fp_enzyme_edited.close()
 
 ## 5 step: separate EC node to several Enzyme node
-multi_gene_log.write('ENTRY\tGENES\tNAME\n')
+multi_gene_log.write('Identifier\tGENES\tNAME\n')
 for enzyme in db.node.find({'TYPE': 'Enzyme'}):
     # log create
-    multi_gene_log.write(enzyme['ENTRY'] + '\t' + str(enzyme['GENES']) + '\t' + str(enzyme['NAME']) + '\n')
+    multi_gene_log.write(enzyme['Identifier'] + '\t' + str(enzyme['GENES']) + '\t' + str(enzyme['NAME']) + '\n')
     if len(enzyme['NAME']) > 1:
         separate(enzyme)
     # un-listize for Enzyme which only have one name but saved in list form
@@ -169,7 +169,7 @@ fp_unedited = open(log_enzyme_unedited_path, 'w')
 enzyme_dict = {}
 for enzyme in db.node.find({'TYPE': 'Enzyme'}):
     if enzyme['_id'] not in edited_id_list:
-        enzyme_dict[enzyme['ENTRY']] = [enzyme['NAME'], enzyme['GENES']]
+        enzyme_dict[enzyme['Identifier']] = [enzyme['NAME'], enzyme['GENES']]
 
 fp_unedited.write(str(enzyme_dict))
 fp_unedited.close()

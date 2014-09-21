@@ -3,7 +3,7 @@ __author__ = 'Beibeihome'
 from pymongo import *
 import CONSTANT
 
-node_link_type = {'Reaction': 'React', 'Compound': 'React', 'Enzyme': 'Catalyze', 'sRNA': 'Tiaokong', 'Gene': 'Produce', 'TF': 'Tiaokong'}
+node_link_type = {'Reaction': 'React', 'Compound': 'React', 'Enzyme': 'Catalyze', 'sRNA': 'Tiaokong', 'Gene': 'Produce', 'TF': 'Tiaokong', 'TU': 'Contain', 'Operon': 'Contain'}
 db = MongoClient()[CONSTANT.DATABASE]
 
 for link in db.link.find():
