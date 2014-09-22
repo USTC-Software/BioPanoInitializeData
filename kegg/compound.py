@@ -29,6 +29,7 @@ class Compound(DynamicDocument):
 
     def kegg_name_set(self, text):
         text = text.replace(' ', '')
+        text = text.replace('\n', '')
         text = text.split(';')
         self.NAME_KEGG = text
 
