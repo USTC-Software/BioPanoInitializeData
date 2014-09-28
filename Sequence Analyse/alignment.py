@@ -20,9 +20,11 @@ def main():
         if sequence_5:
             text = ' '.join([id, sequence_5, '\n'])
             text_list.append(text)
+        '''
         if sequence_3:
             text = ' '.join([id, sequence_3, '\n'])
             text_list.append(text)
+        '''
     print 'Successfully read utr sequences'
 
     for node in db.node.find({'TYPE': {'$in': ['Promoter', 'Gene', 'Terminator']}}):
