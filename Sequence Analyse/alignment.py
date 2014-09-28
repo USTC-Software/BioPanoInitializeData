@@ -7,7 +7,7 @@ import CONSTANT
 
 def main():
     db = pymongo.Connection()[CONSTANT.DATABASE]
-    fp = './sequence.fasta'
+    fp = './BLAST/sequence.fasta'
     file = open(fp, 'w')
     text_list = []
     text = ''
