@@ -12,7 +12,7 @@ def main():
     text_list = []
     text = ''
 
-    for utr in db.u_t_r.find():
+    for utr in db.u_t_r.find({'TYPE': 'O_T_P'}):
         id = str(utr['_id'])
         sequence_5 = utr['SEQUENCE_5']
         sequence_3 = utr['SEQUENCE_3']
