@@ -126,6 +126,16 @@ def alignment_data():
     path = './Sequence Analyse/UTR_importing.py'
     execfile(path, {})
 
+
+def blast_setup():
+    path = './Sequence Analyse/alignment.py'
+    order = 'makeblastdb -in sequence.fasta -dbtype nucl -title Blast_title -parseseqids -out Blast_name'
+    print 'fasta database creating'
+    execfile(path, {})
+    print 'blast database creating'
+    os.system(order)
+
+
 def rebuild():
     client = MongoClient()
     db = client[CONSTANT.DATABASE]
@@ -170,6 +180,9 @@ def rebuild():
     print 'Sort link type'
     sort_link()
 
+    print 'BLAST database setup'
+    blast_setup()
+
     print 'Fishing patch built in August 22'
     patch2()
 
@@ -185,6 +198,7 @@ def main():
     #kegg_reaction()
 
 
-main()
+blast_setup()
+#main()
 #alignment_data()
 #rename_enzyme()

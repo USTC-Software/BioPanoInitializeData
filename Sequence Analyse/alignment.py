@@ -7,7 +7,7 @@ import CONSTANT
 
 def main():
     db = pymongo.Connection()[CONSTANT.DATABASE]
-    fp = './sequence.txt'
+    fp = './sequence.fasta'
     file = open(fp, 'w')
     text_list = []
     text = ''
@@ -16,6 +16,7 @@ def main():
         id = str(utr['_id'])
         sequence_5 = utr['SEQUENCE_5']
         sequence_3 = utr['SEQUENCE_3']
+        id = '>' + id + '\n'
         if sequence_5:
             text = ' '.join([id, sequence_5, '\n'])
             text_list.append(text)
@@ -28,6 +29,7 @@ def main():
         if 'SEQUENCE' in node.keys():
             if node['SEQUENCE']:
                 id = str(node['_id'])
+                id = '>' + id + '\n'
                 sequence = node['SEQUENCE']
                 text = ' '.join([id, sequence, '\n'])
                 text_list.append(text)
