@@ -173,3 +173,14 @@ for enzyme in db.node.find({'TYPE': 'Enzyme'}):
 
 fp_unedited.write(str(enzyme_dict))
 fp_unedited.close()
+
+
+## 7 step: add sysname to sigma protein
+
+db.node.update({'NAME': 'FecI'}, {'$push': {'SYSNAME': 'sigma19'}})
+db.node.update({'NAME': 'RpoE'}, {'$push': {'SYSNAME': 'sigma24'}})
+db.node.update({'NAME': 'FliA'}, {'$push': {'SYSNAME': 'sigma28'}})
+db.node.update({'NAME': 'RpoH'}, {'$push': {'SYSNAME': 'sigma32'}})
+db.node.update({'NAME': 'RpoS'}, {'$push': {'SYSNAME': 'sigma38'}})
+db.node.update({'NAME': 'Rp54'}, {'$push': {'SYSNAME': 'sigma54'}})
+db.node.update({'NAME': 'RpoD'}, {'$push': {'SYSNAME': 'sigma70'}})

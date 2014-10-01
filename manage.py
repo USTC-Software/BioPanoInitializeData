@@ -129,7 +129,7 @@ def alignment_data():
 
 def blast_setup():
     path = './Sequence Analyse/alignment.py'
-    order = 'makeblastdb -in ./BLAST/sequence.fasta -dbtype nucl -title ustc_blast -parse_seqids -out ustc_blast'
+    order = 'makeblastdb -in ./BLAST/sequence.fasta -dbtype nucl -title ustc_blast -parse_seqids -out /tmp/blast/ustc_blast'
     print 'fasta database creating'
     execfile(path, {})
     print 'blast database creating'
