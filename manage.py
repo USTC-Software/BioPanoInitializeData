@@ -180,8 +180,8 @@ def rebuild():
     print 'Sort link type'
     sort_link()
 
-    print 'BLAST database setup'
-    blast_setup()
+    #print 'BLAST database setup'
+    #blast_setup()
 
     print 'Fishing patch built in August 22'
     patch2()
@@ -198,7 +198,7 @@ def main():
     #kegg_reaction()
 
 
-blast_setup()
-#main()
+#blast_setup()
+main()
 #alignment_data()
 #rename_enzyme()
