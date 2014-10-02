@@ -1,4 +1,4 @@
-Protein	 TU	Function	Evidence that supports the existence of the regulatory interaction
+Protein	TU	Function	Evidence that supports the existence of the regulatory interaction
 FecI	fecABCDE[fecAp]	+	"[FP, HIPP, TIM, CV(FP/TIM)]"
 RpoE	C0343-dbpA[dbpAp2]	+	[ICWHO]
 RpoE	aaeB[aaeBp3]	+	[ICWHO]
