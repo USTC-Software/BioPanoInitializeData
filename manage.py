@@ -136,6 +136,11 @@ def blast_setup():
     os.system(order)
 
 
+def sigma_link():
+    path = './Patch/sigma_link.py'
+    execfile(path, {})
+
+
 def rebuild():
     client = MongoClient()
     db = client[CONSTANT.DATABASE]
@@ -176,6 +181,9 @@ def rebuild():
 
     print '\nAdd Sysname to Gene'
     gene_sysname()
+
+    print '\n Add sigma link'
+    sigma_link()
 
     print 'Sort link type'
     sort_link()
