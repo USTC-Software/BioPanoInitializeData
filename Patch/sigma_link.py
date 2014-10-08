@@ -32,6 +32,7 @@ field_list = line_list[0].split('\t')
 for line in line_list[1:]:
 	attri_list = line.split('\t')
 	attri_list[1] = attri_list[1].split('[')[0]
+	print attri_list
 	node1 = db.node.find_one({'NAME': attri_list[0], 'TYPE': 'Protein'})
 	node2 = db.node.find_one({'NAME': attri_list[1], 'TYPE': 'TU'})
 	if node1 and node2:
@@ -41,3 +42,5 @@ for line in line_list[1:]:
 		for i in xrange(len(field_list)):
 			dict[field_list[i]] = attri_list[i]
 		db.link.update({'_id': link_id}, {'$set': dict})
+	else:
+		print 'not found'
