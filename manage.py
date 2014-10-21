@@ -178,8 +178,8 @@ def rebuild():
     print 'Sort link type'
     sort_link()
 
-    print 'BLAST database setup'
-    blast_setup()
+    #print 'BLAST database setup'
+    #blast_setup()
 
     print 'Fishing patch built in August 22'
     patch2()
