@@ -136,6 +136,11 @@ def blast_setup():
     os.system(order)
 
 
+def project_init():
+    path = './Patch/project_init.py'
+    execfile(path, {})
+
+
 def rebuild():
     client = MongoClient()
     db = client[CONSTANT.DATABASE]
@@ -186,19 +191,12 @@ def rebuild():
     print 'Fishing patch built in August 22'
     patch2()
 
+    print 'Initial project information'
+    project_init()
+
 
 def main():
     rebuild()
-    #patch2()
-    #kegg_node(0)
-    #kegg_reaction_function_link()
-    #database_link()
-    #patch1()
-    #kegg_connect()
-    #kegg_reaction()
 
+main()
 
-blast_setup()
-#main()
-#alignment_data()
-#rename_enzyme()

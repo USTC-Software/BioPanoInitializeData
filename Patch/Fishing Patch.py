@@ -25,7 +25,7 @@ def create_noderef_coll():
 
     content_list = []
     for log in log_list:
-        content = {'node_id': log['_id'], 'x': INIT_LOCATION, 'y': INIT_LOCATION, 'owner': 54250}
+        content = {'node_id': log['_id'], 'x': INIT_LOCATION, 'y': INIT_LOCATION}
         # In Kegg database, we use NAME_KEGG as NAME in index table
         if log['TYPE'] in ['Enzyme', 'Compound']:
             if 'NAME_KEGG' in log.keys():
@@ -53,7 +53,7 @@ def create_linkref_coll():
 
     content_list = []
     for log in log_list:
-        content = {'link_id': log['_id'], 'id1': log['NODE1'], 'id2': log['NODE2'], 'owner': 54250}
+        content = {'link_id': log['_id'], 'id1': log['NODE1'], 'id2': log['NODE2']}
         content_list.append(content)
 
     ref_log_id_list = db.link_ref.insert(content_list)
