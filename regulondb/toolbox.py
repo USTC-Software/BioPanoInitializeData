@@ -86,7 +86,8 @@ def save_data_xlsx(collection, path, typ):
 def line2dict(fields, line):
     values = line.split('\t')
     dic = {}
-    if fields[0] == 'TF' and fields[1] == 'TU':
+    if fields[0] == 'TU' or fields[1] == 'TU':
+        values[0] = values[0].split('[')[0]
         values[1] = values[1].split('[')[0]
     for i in xrange(len(fields)):
         dic[fields[i]] = values[i]

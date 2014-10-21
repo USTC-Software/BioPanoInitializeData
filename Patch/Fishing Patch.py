@@ -40,6 +40,7 @@ def create_noderef_coll():
         ref_log = db.node_ref.find_one({'_id': ref_log_id})
         db.node.update({'_id': ref_log['node_id']}, {'$push': {'REF': ref_log_id}})
     print 'Basic index table of node establishing is over '
+    db.node_ref.create_index('pid')
 
 
 def create_linkref_coll():
@@ -63,6 +64,7 @@ def create_linkref_coll():
         db.link.update({'_id': ref_log['link_id']}, {'$push': {'REF': ref_log_id}})
 
     db.link_ref.create_index([('id1', ASCENDING), ('id2', DESCENDING)])
+    db.link_ref.create_index('pid')
 
     print 'Basic index table of link establishing is over'
 

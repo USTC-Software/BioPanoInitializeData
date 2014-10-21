@@ -67,13 +67,12 @@ def add_ref_utr(path):
             db.u_t_r.insert(dic)
 
     for promoter in db.u_t_r.find({'TYPE': 'O_T_P'}):
-        pro_node = db.node.find_one({'NAME': promoter['PROMOTER_NAME']})
+        pro_node = db.node.find_one({'NAME': promoter['OPERON_NAME']})
         if pro_node is not None:
             db.u_t_r.update({'_id': promoter['_id']}, {'$set': {'node_id': pro_node['_id']}})
         else:
             db.u_t_r.remove({'_id': promoter['_id']})
 
 add_ref_utr(SOURCE_PATH)
-db.u_t_r.create_index('SEQUENCE')
-db.u_t_r.create_index('SEQUENCE_5')
-db.u_t_r.create_index('SEQUENCE_3')
+db.u_t_r.create_index('node_id')
+

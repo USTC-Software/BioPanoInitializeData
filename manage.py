@@ -124,7 +124,7 @@ def alignment_data():
 
 def blast_setup():
     path = './Sequence Analyse/alignment.py'
-    order = 'makeblastdb -in ./BLAST/sequence.fasta -dbtype nucl -title ustc_blast -parse_seqids -out ustc_blast'
+    order = 'makeblastdb -in ./BLAST/sequence.fasta -dbtype nucl -title ustc_blast -parse_seqids -out /tmp/blast/ustc_blast'
     print 'fasta database creating'
     execfile(path, {})
     print 'blast database creating'
@@ -133,6 +133,9 @@ def blast_setup():
 
 def project_init():
     path = './Patch/project_init.py'
+
+def sigma_link():
+    path = './Patch/sigma_link.py'
     execfile(path, {})
 
 
@@ -174,6 +177,9 @@ def rebuild():
 
     print '\nAdd Sysname to Gene'
     gene_sysname()
+
+    print '\n Add sigma link'
+    sigma_link()
 
     print 'Sort link type'
     sort_link()
