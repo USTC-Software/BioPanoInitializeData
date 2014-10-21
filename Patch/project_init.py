@@ -3,8 +3,8 @@ __author__ = 'Beibeihome'
 from pymongo import *
 from datetime import datetime
 import CONSTANT
+from CONSTANT import db
 
-db = MongoClient()[CONSTANT.DATABASE]
 
 user_template = {'_cls': 'User', 'username': 'USTC_Software2014', 'is_staff': False, 'is_active': True,
                  'is_superuser': False, 'last_login': datetime.now(), 'date_joined': datetime.now(),

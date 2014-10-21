@@ -2,9 +2,9 @@ __author__ = 'Beibeihome'
 
 from pymongo import *
 import CONSTANT
+from CONSTANT import db
 
 node_link_type = {'Reaction': 'React', 'Compound': 'React', 'Enzyme': 'Catalyze', 'sRNA': 'Tiaokong', 'Gene': 'Produce', 'TF': 'Tiaokong', 'TU': 'Contain', 'Operon': 'Contain'}
-db = MongoClient()[CONSTANT.DATABASE]
 
 for link in db.link.find():
     db.link.update({'_id': link['_id']}, {'$set': {'TYPE': node_link_type[link['TYPE1']]}})

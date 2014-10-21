@@ -2,6 +2,7 @@ __author__ = 'Beibeihome'
 
 from pymongo import *
 import CONSTANT
+from CONSTANT import db
 
 
 ## 2014/8/22
@@ -11,7 +12,6 @@ import CONSTANT
 INIT_COUNTER_NUM_SERVER = 1
 INIT_COUNTER_NUM_CLIENT = 0
 INIT_LOCATION = 0
-db = MongoClient()[CONSTANT.DATABASE]
 
 
 def create_noderef_coll():
