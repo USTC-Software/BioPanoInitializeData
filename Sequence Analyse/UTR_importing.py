@@ -8,7 +8,7 @@ from pymongo import *
 from CONSTANT import db
 
 SOURCE_PATH = './regulondb/collection/node/UTR_5_3_sequence.xlsx'
-connect(CONSTANT.DATABASE, host='mongodb://database_importing:d624a6658155a58b15a35a62dce0b88a@us-ce-0:27017,cn-ah-0:27017,cn-bj-0:27017', replicaSet='replset')
+connect(CONSTANT.DATABASE, host='mongodb://import:Dmd2WkjlpmBfInLTY20swgsGO2CQF0bHXn3mWS0niLsJNq0ZqEiiSzNZv0YRUk@us-ce-0:27017,cn-ah-0:27017,cn-bj-0:27017', replicaSet='replset')
 class UTR(DynamicDocument):
     OPERON_NAME = StringField()
     TU_NAME = StringField()

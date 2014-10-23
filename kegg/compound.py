@@ -73,8 +73,7 @@ class Compound(DynamicDocument):
 
 class c_importing_thread(threading.Thread): #The timer class is derived from the class threading.Thread
 
-    connect(CONSTANT.DATABASE, host='mongodb://database_importing:d624a6658155a58b15a35a62dce0b88a@us-ce-0:27017,cn-ah-0:27017,cn-bj-0:27017', replicaSet='replset')
-
+    connect(CONSTANT.DATABASE, host='mongodb://import:Dmd2WkjlpmBfInLTY20swgsGO2CQF0bHXn3mWS0niLsJNq0ZqEiiSzNZv0YRUk@us-ce-0:27017,cn-ah-0:27017,cn-bj-0:27017', replicaSet='replset')
     def __init__(self, path_list, num):
         threading.Thread.__init__(self)
         self.path_list = path_list
@@ -101,7 +100,7 @@ class c_importing_thread(threading.Thread): #The timer class is derived from the
 def main():
     BASEPATH = './kegg/compound/'
     #BASEPATH = './compound/'
-    connect(CONSTANT.DATABASE, host='mongodb://database_importing:d624a6658155a58b15a35a62dce0b88a@us-ce-0:27017,cn-ah-0:27017,cn-bj-0:27017', replicaSet='replset')
+    connect(CONSTANT.DATABASE, host='mongodb://import:Dmd2WkjlpmBfInLTY20swgsGO2CQF0bHXn3mWS0niLsJNq0ZqEiiSzNZv0YRUk@us-ce-0:27017,cn-ah-0:27017,cn-bj-0:27017', replicaSet='replset')
     #save the paths of .cvs files
     paths = []
     for filelist in os.listdir(BASEPATH):

@@ -142,7 +142,7 @@ def sigma_link():
 def rebuild():
     if OVERWRITE:
         for collection in db.collection_names():
-            if collection != 'system.indexes':
+            if collection not in ['system.indexes', 'system.users']:
                 db.drop_collection(collection)
     print 'count log creating'
     count()
