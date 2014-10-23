@@ -87,7 +87,6 @@ class Protein(DynamicDocument):
 
 def main():
     BASEPATH = './kegg/protein/'
-    connect(CONSTANT.DATABASE, host='mongodb://import:Dmd2WkjlpmBfInLTY20swgsGO2CQF0bHXn3mWS0niLsJNq0ZqEiiSzNZv0YRUk@us-ce-0:27017,cn-ah-0:27017,cn-bj-0:27017', replicaSet='replset')
     #save the paths of .cvs files
     paths = []
     for filelist in os.listdir(BASEPATH):

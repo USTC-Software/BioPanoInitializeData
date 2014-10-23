@@ -72,7 +72,6 @@ def standardized(strin):
     return re_replace.sub('_', strin)
 
 def main():
-    connect(CONSTANT.DATABASE, host='mongodb://import:Dmd2WkjlpmBfInLTY20swgsGO2CQF0bHXn3mWS0niLsJNq0ZqEiiSzNZv0YRUk@us-ce-0:27017,cn-ah-0:27017,cn-bj-0:27017', replicaSet='replset')
     basepath = './node'
 
     paths = get_dirs(basepath)
@@ -116,7 +115,6 @@ def main():
 
 
 def main_2():
-    connect(CONSTANT.DATABASE, host='mongodb://import:Dmd2WkjlpmBfInLTY20swgsGO2CQF0bHXn3mWS0niLsJNq0ZqEiiSzNZv0YRUk@us-ce-0:27017,cn-ah-0:27017,cn-bj-0:27017', replicaSet='replset')
     basepath = './father'
     paths = get_dirs(basepath)
     for path in paths:
