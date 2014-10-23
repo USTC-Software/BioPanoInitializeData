@@ -80,7 +80,7 @@ def standardized(strin):
 
 
 def main():
-    connect('igemdata')
+    connect(CONSTANT.DATABASE, host='mongodb://database_importing:d624a6658155a58b15a35a62dce0b88a@us-ce-0:27017,cn-ah-0:27017,cn-bj-0:27017', replicaSet='replset')
     basepath = './regulondb/collection/node'
 
     paths = get_dirs(basepath)
@@ -124,7 +124,7 @@ def main():
 
 
 def main_1():
-    connect('igemdata')
+    connect(CONSTANT.DATABASE, host='mongodb://database_importing:d624a6658155a58b15a35a62dce0b88a@us-ce-0:27017,cn-ah-0:27017,cn-bj-0:27017', replicaSet='replset')
     basepath = './regulondb/collection/link/'
 
     paths = get_dirs(basepath)
@@ -164,7 +164,7 @@ def main_1():
 
 
 def main_2():
-    connect('igemdata')
+    connect(CONSTANT.DATABASE, host='mongodb://database_importing:d624a6658155a58b15a35a62dce0b88a@us-ce-0:27017,cn-ah-0:27017,cn-bj-0:27017', replicaSet='replset')
     basepath = './regulondb/father'
     paths = get_dirs(basepath)
     for path in paths:

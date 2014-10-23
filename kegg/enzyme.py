@@ -86,7 +86,7 @@ def non_eco_enzyme_delete():
 
 def main():
     BASEPATH = './kegg/enzyme/'
-    connect('igemdata_new', host='mongodb://product:bXYtvBHrSdbuTMETSVO4VTWGl0oeddBHp3hPNsUbEZOEpRFLcqgaYAjHRirnSI@us-ce-0:27017,cn-ah-0:27017,cn-bj-0:27017', replicaSet='replset')
+    connect(CONSTANT.DATABASE, host='mongodb://database_importing:d624a6658155a58b15a35a62dce0b88a@us-ce-0:27017,cn-ah-0:27017,cn-bj-0:27017', replicaSet='replset')
     #save the paths of .cvs files
     paths = []
     for filelist in os.listdir(BASEPATH):

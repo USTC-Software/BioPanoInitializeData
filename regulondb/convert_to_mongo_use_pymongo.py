@@ -174,7 +174,7 @@ def main_2():
                     tag = tag + 1
 
 def main_3():
-    connect(CONSTANT.DATABASE)
+    connect(CONSTANT.DATABASE, host='mongodb://database_importing:d624a6658155a58b15a35a62dce0b88a@us-ce-0:27017,cn-ah-0:27017,cn-bj-0:27017', replicaSet='replset')
     basepath = './regulondb/father'
     paths = get_dirs(basepath)
     for path in paths:
